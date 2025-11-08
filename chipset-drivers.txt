@@ -1,1 +1,3 @@
+Intel Chipset INF Utility
+DriverVer = 26/09/2025,10.1.20266.8668
 https://downloadmirror.intel.com/861043/SetupChipset.exe
