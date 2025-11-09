@@ -2,7 +2,7 @@
 
 I'm currently working on a tool for updating **Intel Chipset Drivers** — and honestly, the deeper I dig, the more horrified I become.  
 Let me share a bit of this headache with you, using the barely-breathing **X79 / C600 platform** as my case study.  
-Yes, I’m stubborn — I still use this machine for *everything* in 2025. You can find the full specs in my signature.
+Yes, I’m stubborn — I still use this machine for *everything* in 2025. For example, you can see how this platform handles modern GPUs in my YouTube video demonstrating NVIDIA Smooth Motion technology: [https://www.youtube.com/watch?v=TXstp8kN7j4](https://www.youtube.com/watch?v=TXstp8kN7j4)
 
 ---
 
