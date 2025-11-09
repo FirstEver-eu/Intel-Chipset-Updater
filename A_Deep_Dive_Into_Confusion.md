@@ -103,7 +103,7 @@ If someone at Intel had organized this properly, we would have **separate packag
 | Filename                                       | Version  | Release Date |
 | :--------------------------------------------- | :------: | :---------- |
 | IntelChipset-LunarLake-25.8.1-win10-win11.exe  | 25.8.1  | 15/08/2025  |
-| IntelChipset-AlderLake-24.11.0-win10-win11.exe | 24.11.0 | 02/08/2024  |
+| IntelChipset-GraniteRapids-24.9.0-win10-win11.exe | 24.9.0 | 30/09/2024  |
 | IntelChipset-Patsburg-21.4.0-win10-win11.exe  | 21.4.0 | 24/04/2021  |
 
 
