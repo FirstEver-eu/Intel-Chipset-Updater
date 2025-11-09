@@ -125,3 +125,8 @@ They don’t pay me enough for this headache. 😅
 📘 **Full detailed version matrix:**  
 [https://github.com/FirstEver-eu/Intel-Chipset-Updater/blob/main/Intel_Chipsets_List.md](https://github.com/FirstEver-eu/Intel-Chipset-Updater/blob/main/Intel_Chipsets_List.md)
 
+---
+
+If your organization is stuck on a problem that even big teams can’t seem to solve, feel free to reach out on LinkedIn — I promise I bring logic where chaos reigns: [https://www.linkedin.com/in/marcin-grygiel/](https://www.linkedin.com/in/marcin-grygiel/)
+
+
