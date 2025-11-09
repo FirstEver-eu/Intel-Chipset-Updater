@@ -22,9 +22,9 @@ The next major update, **9.3.0.1019** (January 2012), became the first *fully st
 | INF Version | Year | X79/C600 Support | Notes |
 | :--- | :--- | :--- | :--- |
 | 9.2.3.1020 | 2011 | ✅ Full | First release for X79 |
-| 9.3.0.1019 | 2012 | ✅ | Stable launch version |
-| 9.4.0.1026 | 2013 | ✅ | Fixes for Windows 8 |
-| 9.4.4.1006 | 2014 | ✅ | Last release with full INF coverage |
+| 9.3.0.1019 | 2012 | ✅ Full | Stable launch version |
+| 9.4.0.1026 | 2013 | ✅ Full | Fixes for Windows 8 |
+| 9.4.4.1006 | 2014 | ✅ Full | Last release with full INF coverage |
 | 10.0.27 | 2014 | ✅ | Marked as “Legacy Platforms” |
 | 10.1.1.45 | 2015 | ⚠️ Last actual support |
 | 10.1.2.x and newer | 2016+ | ❌ Compatibility mode only — no X79/C600 IDs |
