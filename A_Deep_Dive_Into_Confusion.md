@@ -102,7 +102,7 @@ If someone at Intel had organized this properly, we would have **separate packag
 | :--------------------------------------------- | :------: | :---------- |
 | IntelChipset-Skylake-25.2.2-win10-win11.exe    | 25.2.2  | 15/02/2025  |
 | IntelChipset-AlderLake-24.11.0-win10-win11.exe | 24.11.0 | 02/08/2024  |
-| IntelChipset-Patsburg-15.1.0-win10-win11.exe  | 15.1.0 | 20/01/2015  |
+| IntelChipset-Patsburg-21.4.0-win10-win11.exe  | 21.4.0 | 24/04/2015  |
 
 
 Each package would contain only the relevant INF files — clear, versioned, and predictable.
