@@ -124,11 +124,11 @@ To make things easier, this link should list **all future Intel Chipset INF Util
 Of course, you can also use the **Intel® Driver & Support Assistant (Intel® DSA)** for automatic detection and updates:  
 [https://www.intel.com/content/www/us/en/support/detect.html](https://www.intel.com/content/www/us/en/support/detect.html)
 
-I personally enjoy automated updates, but I created this project because I prefer **simple, straightforward solutions**.  
+I personally enjoy automated updates, but I created this project because I prefer simple, straightforward solutions.  
+Before you even open any update tool, my script will already install the latest drivers, leaving no leftover files or unnecessary entries in the system registry.
 
 Direct link to one of the official drivers:  
 [https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html](https://www.intel.com/content/www/us/en/download/19347/chipset-inf-utility.html)
-
 
 ---
 
