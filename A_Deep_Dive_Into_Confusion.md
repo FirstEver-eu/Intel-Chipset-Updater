@@ -28,7 +28,7 @@ The next major update, **9.3.0.1019** (January 2012), became the first *fully st
 | 10.0.27 | 2014 | ✅ Full | Marked as “Legacy Platforms” |
 | 10.1.1.45 | 2015 | ⚠️ Last actual support | Just PCIe root port driver |
 | 10.1.2.x and newer | 2016+ | ❌ Compatibility only | No X79/C600 IDs |
-| 10.1.20266.8668 (current) | 2024–2025 | ❌ Compatibility only | Missing 1Dxx/1Exx entries |
+| 10.1.20266.8668 (current) | 2025 | ❌ Compatibility only | Missing 1Dxx/1Exx entries |
 
 ---
 
