@@ -54,6 +54,8 @@
 | A2C6 | CoffeeLake / Z370 | CoffeelakeSystem.inf | (needs verification) |
 | A2C1 | CoffeeLake / H370 | CoffeelakeSystem.inf | (needs verification) |
 | A2C2 | CoffeeLake / B360 | CoffeelakeSystem.inf | (needs verification) |
+| A2D1 | CoffeeLake / X299 | CoffeelakeSystem.inf | (needs verification) |
+| A2C8 | CoffeeLake / C246 | CoffeelakeSystem.inf | (needs verification) |
 
 ## 8th Generation (Coffee Lake)
 | HW_ID | Platform | Driver | Max Version |
@@ -66,16 +68,35 @@
 | 5900 | KabyLake / Platform | KabylakeSystem.inf | 10.1.10.5 |
 | A290 | KabyLake-PCH-H / H270 | KabyLakePCH-HSystem.inf | 10.1.11.5 |
 | 2910 | KabyLake / Z270 | KabyLake.inf | 10.1.1.38 (needs verification) |
+| A110 | SunrisePoint-H / H170 | SunrisePoint-HSystem.inf | 10.1.6.3 |
+| 9D10 | SunrisePoint-LP / Mobile | SunrisePoint-LPSystem.inf | 10.1.5.3 |
 
 ## 6th Generation (Skylake)
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
 | 1900 | Skylake / Platform | SkylakeSystem.inf | 10.1.7.4 |
 | 2014 | Skylake-E / Server | Skylake-ESystem.inf | 10.1.8.8 |
-| A110 | SunrisePoint-H / H170 | SunrisePoint-HSystem.inf | 10.1.6.3 |
-| 9D10 | SunrisePoint-LP / Mobile | SunrisePoint-LPSystem.inf | 10.1.5.3 |
 
-## Server/HEDT Platforms
+## 5th Generation (Broadwell)
+| HW_ID | Platform | Driver | Max Version |
+| :--- | :--- | :--- | :--- |
+| 8C01 | Broadwell / B85 | Broadwell.inf | (needs verification) |
+| 8D54 | Broadwell-E / X99 | WellsburgSystem.inf | *10.1.2.85 (needs verification) |
+
+## 4th Generation (Haswell/Haswell-E)
+| HW_ID | Platform | Driver | Max Version |
+| :--- | :--- | :--- | :--- |
+| 8C02 | Haswell / Z87 | 8SeriesSystem.inf | (needs verification) |
+| 8C03 | Haswell / H87 | 8SeriesSystem.inf | (needs verification) |
+| 8C04 | Haswell / H81 | 8SeriesSystem.inf | (needs verification) |
+| 8D50 | Haswell-E / X99 | WellsburgSystem.inf | *10.1.2.85 (needs verification) |
+
+## 3rd Generation (Ivy Bridge-E)
+| HW_ID | Platform | Driver | Max Version |
+| :--- | :--- | :--- | :--- |
+| 1E10 | IvyBridge-E / X79 | Patsburg.inf | 10.1.1.38 |
+
+## Server Platforms
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
 | 2714 | GraniteRapids / Server | GraniteRapidsSystem.inf | 10.1.52.12 |
@@ -83,10 +104,6 @@
 | 1BB8 | Emmitsburg / Server | EmmitsburgSystem.inf | 10.1.40.6 |
 | 37C8 | Lewisburg / C620 | LewisburgSystem.inf | 10.1.9.6 |
 | 09A2 | Server Common / Platform | Server_CommonSystem.inf | 10.1.42.12 |
-| A2D1 | CoffeeLake / X299 | CoffeelakeSystem.inf | (needs verification) |
-| A2C8 | CoffeeLake / C246 | CoffeelakeSystem.inf | (needs verification) |
-| 8D54 | Wellsburg / X99 | WellsburgSystem.inf | *10.1.2.85 (needs verification) |
-| 1E10 | Patsburg / X79 | Patsburg.inf | 10.1.1.38 |
 
 ## Mobile/Embedded/SoC Platforms
 | HW_ID | Platform | Driver | Max Version |
@@ -101,10 +118,3 @@
 | 9D80 | CannonLake-LP / Mobile | CannonLake-LPSystem.inf | 10.1.15.7 |
 | 18A2 | CedarFork / Embedded | CedarForkSystem.inf | 10.1.21.10 |
 | 1980 | Denverton / Embedded | DenvertonSystem.inf | 10.1.19.2 |
-
-## Older Platforms (4th/5th Generation)
-| HW_ID | Platform | Driver | Max Version |
-| :--- | :--- | :--- | :--- |
-| 8C01 | Broadwell / B85 | Broadwell.inf | (needs verification) |
-| 8D54 | Broadwell-E / X99 | WellsburgSystem.inf | *10.1.2.85 (needs verification) |
-| 1E10 | IvyBridge-E / X79 | Patsburg.inf | 10.1.1.38 |
