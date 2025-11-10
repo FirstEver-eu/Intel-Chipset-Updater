@@ -1,4 +1,4 @@
-# Intel Chipset Updater v10.1
+# Intel Chipset Driver Updater v10.1
 
 Automated tool to download and install the latest Intel Chipset drivers directly from Intel servers and manufacturer websites.
 
