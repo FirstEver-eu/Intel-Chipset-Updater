@@ -16,7 +16,7 @@
 | :--- | :--- | :--- | :--- |
 | A77D | RaptorLake / Z790 | RaptorLakeSystem.inf | 10.1.49.10 |
 | 7A00 | RaptorLake-PCH-S / W780 | RaptorLakePCH-SSystem.inf | 10.1.46.5 |
-| A3A0 | RaptorLake / Z790 | RaptorLake.inf | 10.1.46.3 *10.1.19913.8607 (unconfirmed) |
+| A3A0 | RaptorLake / Z790 | RaptorLake.inf | 10.1.20062.8627* |
 
 ## 12th Generation (Alder Lake)
 | HW_ID | Platform | Driver | Max Version |
@@ -25,7 +25,7 @@
 | 5180 | AlderLake-PCH-P / B660 | AlderLakePCH-PSystem.inf | 10.1.36.7 |
 | 7A80 | AlderLake-PCH-S / W680 | AlderLakePCH-SSystem.inf | 10.1.37.7 |
 | 54A3 | AlderLake-N / Mobile | AlderLakePCH-NSystem.inf | 10.1.50.8 |
-| A2A0 | AlderLake / Z690 | AlderLake.inf | 10.1.45.3 *10.1.19899.8597 (unconfirmed) |
+| A2A0 | AlderLake / Z690 | AlderLake.inf | 10.1.19899.8597* |
 
 ## 11th Generation (Tiger Lake / Rocket Lake)
 | HW_ID | Platform | Driver | Max Version |
@@ -49,12 +49,12 @@
 ## 9th Generation (Coffee Lake Refresh)
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
-| A2C5 | CoffeeLake / Z390 | CoffeelakeSystem.inf | (needs verification) |
-| A2C6 | CoffeeLake / Z370 | CoffeelakeSystem.inf | (needs verification) |
-| A2C1 | CoffeeLake / H370 | CoffeelakeSystem.inf | (needs verification) |
-| A2C2 | CoffeeLake / B360 | CoffeelakeSystem.inf | (needs verification) |
-| A2D1 | CoffeeLake / X299 | CoffeelakeSystem.inf | (needs verification) |
-| A2C8 | CoffeeLake / C246 | CoffeelakeSystem.inf | (needs verification) |
+| A2C5 | CoffeeLake / Z390 | CoffeelakeSystem.inf | 10.1.18836.8283* |
+| A2C6 | CoffeeLake / Z370 | CoffeelakeSystem.inf | 10.1.18295.8201* |
+| A2C1 | CoffeeLake / H370 | CoffeelakeSystem.inf | 10.1.18019.8144* |
+| A2C2 | CoffeeLake / B360 | CoffeelakeSystem.inf | 10.1.18019.8144* |
+| A2D1 | CoffeeLake / X299 | CoffeelakeSystem.inf | 10.1.18836.8283* |
+| A2C8 | CoffeeLake / C246 | CoffeelakeSystem.inf | 10.1.17968.8131* |
 
 ## 8th Generation (Coffee Lake)
 | HW_ID | Platform | Driver | Max Version |
@@ -64,9 +64,8 @@
 ## 7th Generation (Kaby Lake)
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
-| 5900 | KabyLake / Platform | KabylakeSystem.inf | 10.1.10.5 |
 | A290 | KabyLake-PCH-H / H270 | KabyLakePCH-HSystem.inf | 10.1.11.5 |
-| 2910 | KabyLake / Z270 | KabyLake.inf | 10.1.1.38 (needs verification) |
+| 2910 | KabyLake / Z270 | KabyLake.inf | 10.1.10.5 |
 | A110 | SunrisePoint-H / H170 | SunrisePoint-HSystem.inf | 10.1.6.3 |
 | 9D10 | SunrisePoint-LP / Mobile | SunrisePoint-LPSystem.inf | 10.1.5.3 |
 
@@ -80,15 +79,15 @@
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
 | 8C01 | Broadwell / B85 | Broadwell.inf | (needs verification) |
-| 8D54 | Broadwell-E / X99 | WellsburgSystem.inf | *10.1.2.85 (needs verification) |
+| 8D54 | Broadwell-E / X99 | WellsburgSystem.inf | 10.1.2.85* |
 
 ## 4th Generation (Haswell/Haswell-E)
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
-| 8C02 | Haswell / Z87 | 8SeriesSystem.inf | (needs verification) |
-| 8C03 | Haswell / H87 | 8SeriesSystem.inf | (needs verification) |
-| 8C04 | Haswell / H81 | 8SeriesSystem.inf | (needs verification) |
-| 8D50 | Haswell-E / X99 | WellsburgSystem.inf | *10.1.2.85 (needs verification) |
+| 8C02 | Haswell / Z87 | 8SeriesSystem.inf | 10.1.1.8* |
+| 8C03 | Haswell / H87 | 8SeriesSystem.inf | 10.1.1.8* |
+| 8C04 | Haswell / H81 | 8SeriesSystem.inf | 10.1.20062.8627* |
+| 8D50 | Haswell-E / X99 | WellsburgSystem.inf | 10.1.2.85* |
 
 ## 3rd Generation (Ivy Bridge-E)
 | HW_ID | Platform | Driver | Max Version |
@@ -117,3 +116,5 @@
 | 9D80 | CannonLake-LP / Mobile | CannonLake-LPSystem.inf | 10.1.15.7 |
 | 18A2 | CedarFork / Embedded | CedarForkSystem.inf | 10.1.21.10 |
 | 1980 | Denverton / Embedded | DenvertonSystem.inf | 10.1.19.2 |
+
+\* The version of the driver package provided on the ASUS website is not necessarily indicative of the version of the chipset drivers that will be installed in your operating system. It is recommended to verify the actual driver versions post-installation through the Device Manager.
