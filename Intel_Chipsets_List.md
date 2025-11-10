@@ -16,7 +16,7 @@
 | :--- | :--- | :--- | :--- |
 | A77D | RaptorLake / Z790 | RaptorLakeSystem.inf | 10.1.49.10 |
 | 7A00 | RaptorLake-PCH-S / W780 | RaptorLakePCH-SSystem.inf | 10.1.46.5 |
-| A3A0 | RaptorLake / Z790 | RaptorLake.inf | 10.1.20062.8627* |
+| A3A0 | Intel Raptor Lake / Raptor Lake Refresh / Z790/Z890 | RaptorLake.inf | 10.1.20062.8627* |
 
 ## 12th Generation (Alder Lake)
 | HW_ID | Platform | Driver | Max Version |
@@ -53,7 +53,7 @@
 | A2C6 | CoffeeLake / Z370 | CoffeelakeSystem.inf | 10.1.18295.8201* |
 | A2C1 | CoffeeLake / H370 | CoffeelakeSystem.inf | 10.1.18019.8144* |
 | A2C2 | CoffeeLake / B360 | CoffeelakeSystem.inf | 10.1.18019.8144* |
-| A2D1 | CoffeeLake / X299 | CoffeelakeSystem.inf | 10.1.18836.8283* |
+| A2D1 | Skylake-X / Cascade Lake-X / X299 | CoffeelakeSystem.inf | 10.1.18836.8283* |
 | A2C8 | CoffeeLake / C246 | CoffeelakeSystem.inf | 10.1.17968.8131* |
 
 ## 8th Generation (Coffee Lake)
@@ -66,13 +66,13 @@
 | :--- | :--- | :--- | :--- |
 | A290 | KabyLake-PCH-H / H270 | KabyLakePCH-HSystem.inf | 10.1.11.5 |
 | 2910 | KabyLake / Z270 | KabyLake.inf | 10.1.10.5 |
-| A110 | SunrisePoint-H / H170 | SunrisePoint-HSystem.inf | 10.1.6.3 |
-| 9D10 | SunrisePoint-LP / Mobile | SunrisePoint-LPSystem.inf | 10.1.5.3 |
+| A110 | Skylake/Kaby Lake (H) / Z170/H170/Z270/H270 | SunrisePoint-HSystem.inf | 10.1.6.3 |
+| 9D10 | Skylake/Kaby Lake (LP) / U/Y Series | SunrisePoint-LPSystem.inf | 10.1.5.3 |
 
 ## 6th Generation (Skylake)
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
-| 1900 | Skylake / Platform | SkylakeSystem.inf | 10.1.7.4 |
+| 1900 | Skylake / 100/200 Series | SkylakeSystem.inf | 10.1.7.4 |
 | 2014 | Skylake-E / Server | Skylake-ESystem.inf | 10.1.8.8 |
 
 ## 5th Generation (Broadwell)
@@ -86,7 +86,7 @@
 | :--- | :--- | :--- | :--- |
 | 8C02 | Haswell / Z87 | 8SeriesSystem.inf | 10.1.1.8* |
 | 8C03 | Haswell / H87 | 8SeriesSystem.inf | 10.1.1.8* |
-| 8C04 | Haswell / H81 | 8SeriesSystem.inf | 10.1.20062.8627* |
+| 8C04 | Haswell / H81/C220 | 8SeriesSystem.inf | 10.1.20062.8627* |
 | 8D50 | Haswell-E / X99/C610 Series | WellsburgSystem.inf | 10.1.2.19* |
 
 ## 3rd Generation (Ivy Bridge-E)
@@ -100,14 +100,14 @@
 | 2714 | GraniteRapids / Server | GraniteRapidsSystem.inf | 10.1.52.12 |
 | 0998 | SapphireRapids / Server | SapphireRapidsSystem.inf | 10.1.39.10 |
 | 1BB8 | Emmitsburg / Server | EmmitsburgSystem.inf | 10.1.40.6 |
-| 37C8 | Lewisburg / C620 Series | LewisburgSystem.inf | 10.1.9.6 |
-| 09A2 | Server Common / Platform | Server_CommonSystem.inf | 10.1.42.12 |
+| 37C8 | Lewisburg / C620/C621 Series | LewisburgSystem.inf | 10.1.9.6 |
+| 09A2 | Intel Server Platform Common Components | Server_CommonSystem.inf | 10.1.42.12 |
 
 ## Mobile/Embedded/SoC Platforms
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
 | 9880 | LakeField / Mobile | LakeFieldSystem.inf | 10.1.28.2 |
-| 4D80 | JasperLake / Mobile | JasperLakePCH-NSystem.inf | 10.1.32.3 |
+| 4D80 | Jasper Lake / Jasper Lake+ / Mobile | JasperLakePCH-NSystem.inf | 10.1.32.3 |
 | 4E00 | JasperLake+ / Mobile | JasperLake+System.inf | 10.1.29.4 |
 | 4B00 | ElkhartLake / Embedded | ElkhartLakeSystem.inf | 10.1.25.6 |
 | 3192 | Geminilake / Mobile | GeminilakeSystem.inf | 10.1.13.4 |
