@@ -87,7 +87,7 @@
 | 8C02 | Haswell / Z87 | 8SeriesSystem.inf | 10.1.1.8* |
 | 8C03 | Haswell / H87 | 8SeriesSystem.inf | 10.1.1.8* |
 | 8C04 | Haswell / H81 | 8SeriesSystem.inf | 10.1.20062.8627* |
-| 8D50 | Haswell-E / X99 | WellsburgSystem.inf | 10.1.2.85* |
+| 8D50 | Haswell-E / X99 | WellsburgSystem.inf | 10.1.2.19* |
 
 ## 3rd Generation (Ivy Bridge-E)
 | HW_ID | Platform | Driver | Max Version |
