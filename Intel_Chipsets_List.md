@@ -79,7 +79,7 @@
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
 | 8C01 | Broadwell / B85 | Broadwell.inf | 10.1.1.13* |
-| 8D54 | Broadwell-E / X99 | WellsburgSystem.inf | 10.1.2.19* |
+| 8D54 | Broadwell-E / X99/C610 Series | WellsburgSystem.inf | 10.1.2.19* |
 
 ## 4th Generation (Haswell/Haswell-E)
 | HW_ID | Platform | Driver | Max Version |
@@ -87,12 +87,12 @@
 | 8C02 | Haswell / Z87 | 8SeriesSystem.inf | 10.1.1.8* |
 | 8C03 | Haswell / H87 | 8SeriesSystem.inf | 10.1.1.8* |
 | 8C04 | Haswell / H81 | 8SeriesSystem.inf | 10.1.20062.8627* |
-| 8D50 | Haswell-E / X99 | WellsburgSystem.inf | 10.1.2.19* |
+| 8D50 | Haswell-E / X99/C610 Series | WellsburgSystem.inf | 10.1.2.19* |
 
 ## 3rd Generation (Ivy Bridge-E)
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
-| 1D10 | IvyBridge-E / X79/C600 | Patsburg.inf | 10.1.1.38 |
+| 1D10 | IvyBridge-E / X79/C600 Series | Patsburg.inf | 10.1.1.38 |
 
 ## Server Platforms
 | HW_ID | Platform | Driver | Max Version |
@@ -100,7 +100,7 @@
 | 2714 | GraniteRapids / Server | GraniteRapidsSystem.inf | 10.1.52.12 |
 | 0998 | SapphireRapids / Server | SapphireRapidsSystem.inf | 10.1.39.10 |
 | 1BB8 | Emmitsburg / Server | EmmitsburgSystem.inf | 10.1.40.6 |
-| 37C8 | Lewisburg / C620 | LewisburgSystem.inf | 10.1.9.6 |
+| 37C8 | Lewisburg / C620 Series | LewisburgSystem.inf | 10.1.9.6 |
 | 09A2 | Server Common / Platform | Server_CommonSystem.inf | 10.1.42.12 |
 
 ## Mobile/Embedded/SoC Platforms
