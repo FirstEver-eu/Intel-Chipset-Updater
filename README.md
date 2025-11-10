@@ -6,6 +6,8 @@ Unlike official Intel releases, this tool can identify the highest available dri
 ## 🪪 Version
 [![GitHub release (latest by date)](https://img.shields.io/github/v/release/FirstEver-eu/Intel-Chipset-Updater?style=flat-square&label=Latest%20Version)](https://github.com/FirstEver-eu/Intel-Chipset-Updater/releases)
 
+📄 The full list of driver versions, and download links for the installer .exe files can be found in the included `chipset-drivers.txt`
+
 ## 🚀 Features
 
 - **Platform Detection**: Automatically identifies Intel chipset platforms
