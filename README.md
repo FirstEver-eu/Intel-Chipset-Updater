@@ -1,4 +1,4 @@
-# Intel Chipset Driver Updater
+# Intel Chipset Updater v10.1
 
 Automated tool to download and install the latest Intel Chipset drivers directly from Intel servers and manufacturer websites.
 
@@ -90,7 +90,7 @@ This tool is not affiliated with Intel Corporation. Drivers are sourced from off
 ---
 **Maintainer**: Marcin Grygiel / www.firstever.tech  
 **Source**: https://github.com/FirstEver-eu/Intel-Chipset-Updater  
-**VirusTotal Scan**: [Result 0/98](https://www.virustotal.com/gui/url/d510a622186b403f9c328c6db36f846cd09be3ac193b6c1bfb4a4720b251bac5/detection) (Clean)
+**VirusTotal Scan**: [Result 0/98](https://www.virustotal.com/gui/url/73be62d14c2a11ebd6322142d44fbd32d843182f3e9f6d5a3a5b6841c552c077) (Clean)
 
 
 
