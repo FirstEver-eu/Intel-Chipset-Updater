@@ -1,6 +1,8 @@
-# Intel Chipset Driver Updater v10.1
-
+## 🧾 Description
 Automated tool to download and install the latest Intel Chipset drivers directly from Intel servers and manufacturer websites.
+
+## 🪪 Version
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/FirstEver-eu/Intel-Chipset-Updater?style=flat-square&label=Latest%20Version)](https://github.com/FirstEver-eu/Intel-Chipset-Updater/releases)
 
 ## 🚀 Features
 
