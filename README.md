@@ -1,6 +1,6 @@
 # Intel Chipset Driver Updater
-
 Automated tool to detect and install the latest Intel chipset INF drivers.  
+
 Unlike official Intel releases, this tool can identify the highest available driver version for each platform and also install drivers for older platforms such as B85; X79/C600; Z87, H87, H81/C220; and X99/C610 — platforms whose drivers are not included in the latest Intel Chipset Driver Software.
 
 ## 🪪 Version
