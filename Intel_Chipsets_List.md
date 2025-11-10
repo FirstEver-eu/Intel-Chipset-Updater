@@ -73,7 +73,7 @@
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
 | 1900 | Skylake / 100/200 Series | SkylakeSystem.inf | 10.1.7.4 |
-| A152 | Skylake / 100 Series/C230 Series | SkylakeSystem.inf | 10.1.20266.8668 |
+| A152 | Skylake / 100 Series/C230 Series | SkylakeSystem.inf | 10.1.6.3 |
 | 2014 | Skylake-E / Server | Skylake-ESystem.inf | 10.1.8.8 |
 
 ## 5th Generation (Broadwell)
