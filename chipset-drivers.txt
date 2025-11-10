@@ -1,3 +1,15 @@
-Intel Chipset INF Utility
+Intel Chipset Device Software
 DriverVer = 26/09/2025,10.1.20266.8668
 https://downloadmirror.intel.com/861043/SetupChipset.exe
+
+Intel Chipset Device Software
+DriverVer = 29/07/2021,10.1.1.8
+https://download.gigabyte.com/FileList/Driver/mb_driver_chipset_intel_w10.zip
+
+Intel Chipset Device Software
+DriverVer = 30/05/2016,10.1.2.19
+https://download1.gigabyte.com/Files/Driver/mb_driver_chipset_intel_x99_refresh.zip
+
+Intel Chipset Device Software
+DriverVer = 03/10/2016,10.1.1.38
+https://download.gigabyte.com/FileList/Driver/mb_driver_chipset_intel_100series.zip
