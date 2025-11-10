@@ -78,7 +78,7 @@
 ## 5th Generation (Broadwell)
 | HW_ID | Platform | Driver | Max Version |
 | :--- | :--- | :--- | :--- |
-| 8C01 | Broadwell / B85 | Broadwell.inf | (needs verification) |
+| 8C01 | Broadwell / B85 | Broadwell.inf | 10.1.1.13* |
 | 8D54 | Broadwell-E / X99 | WellsburgSystem.inf | 10.1.2.85* |
 
 ## 4th Generation (Haswell/Haswell-E)
