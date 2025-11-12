@@ -413,6 +413,6 @@
 
 **Note on package versions:** Intel occasionally releases driver packages in two variants: consumer and server. Each variant may provide drivers for different devices. In this list, we denote the server variant with the `(S)` suffix to distinguish it from the consumer version.
 
-Drivers marked with * indicate that the driver itself did not contain an embedded date, and the system assigned it a default minimal date — in this case, 18/07/1968. An approximate release date is provided based on the certificate timestamp found in the installer containing these drivers.
+Drivers marked with * indicate that no date was embedded in the driver, so the system automatically assigned the default minimal date — 18/07/1968. An approximate release date is provided based on the certificate timestamp found in the driver installer.
 
 **Source:** [Intel Chipset Driver Updater](https://github.com/FirstEver-eu/Intel-Chipset-Updater/blob/main/Intel_Chipsets_Drivers_Latest.md) / **Project by:** [Marcin Grygiel](https://www.linkedin.com/in/marcin-grygiel/) / **Last Update:** 2025-11-12
