@@ -1,807 +1,420 @@
-# Intel Chipsets List - System Drivers
+# Intel Chipset Drivers List
 
-<!-- # Future/Unreleased Intel Platforms
-Note: These platforms are announced/future and currently **not detected** by the latest Intel chipset drivers.
-| 8A23 | PantherLake / Desktop | TBD | TBD |
-| 8A25 | PantherLake / Mobile  | TBD | TBD |
-| 9A24 | ClearwaterForest / Server | TBD | TBD |
+<!--
+# Future/Unreleased Intel Platforms
+| Platform | Generation | Type | Status | Expected |
+|----------|------------|------|--------|----------|
+| Panther Lake | 15th Gen Core | Desktop/Mobile | In Development | 2025-2026 |
+| Nova Lake | 16th Gen Core | Desktop/Mobile | Planned | 2026-2027 |
+| Lunar Lake Refresh | Core Ultra 200V | Mobile | Planned | 2025 |
+| Clearwater Forest | Xeon 6th Gen | Server | In Development | 2025 |
+| Diamond Rapids | Xeon 7th Gen | Server | Planned | 2026 |
+| Bartlett Lake | Refresh | Desktop | Planned | 2025 |
 -->
 
-## AlderLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| AlderLake | AlderLakeDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.45.9 | 460D, 461F, 462D, 462F, 463D, 463F, 464D, 466E |
-| AlderLake | AlderLakePCH-NDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.50.8 | 5480, 5481, 5482, 5483, 5484, 5485, 5486, 5487, 5488, 5489, 548A, 548B, 548C, 548D, 548E, 548F, 5490, 5491, 5492, 5493, 5494, 5495, 5496, 5497, 5498, 5499, 549A, 549B, 549C, 549D, 549E, 549F, 54B0, 54B1, 54B2, 54B3, 54B4, 54B5, 54B6, 54B7, 54B8, 54B9, 54BA, 54BB, 54BC, 54BD, 54BE, 54BF |
-| AlderLake | AlderLakePCH-NSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.50.8 | 5480, 5481, 5482, 5483, 5484, 5485, 5486, 5487, 5488, 5489, 548A, 548B, 548C, 548D, 548E, 548F, 5490, 5491, 5492, 5493, 5494, 5495, 5496, 5497, 5498, 5499, 549A, 549B, 549C, 549D, 549E, 549F, 54A0, 54A1, 54A3, 54A4, 54AF, 54B0, 54B1, 54B2, 54B3, 54B4, 54B5, 54B6, 54B7, 54B8, 54B9, 54BA, 54BB, 54BC, 54BD, 54BE, 54BF, 54EF |
-| AlderLake | AlderLakePCH-PDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.36.7 | 5180, 5181, 5182, 5183, 5184, 5185, 5186, 5187, 5188, 5189, 518A, 518B, 518C, 518D, 518E, 518F, 5190, 5191, 5192, 5193, 5194, 5195, 5196, 5197, 5198, 5199, 519A, 519B, 519C, 519D, 519E, 519F, 51B0, 51B1, 51B2, 51B3, 51B4, 51B5, 51B6, 51B7, 51B8, 51B9, 51BA, 51BB, 51BC, 51BD, 51BE, 51BF |
-| AlderLake | AlderLakePCH-PSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.36.7 | 5180, 5181, 5182, 5183, 5184, 5185, 5186, 5187, 5188, 5189, 518A, 518B, 518C, 518D, 518E, 518F, 5190, 5191, 5192, 5193, 5194, 5195, 5196, 5197, 5198, 5199, 519A, 519B, 519C, 519D, 519E, 519F, 51A0, 51A1, 51A3, 51A4, 51AF, 51B0, 51B1, 51B2, 51B3, 51B4, 51B5, 51B6, 51B7, 51B8, 51B9, 51BA, 51BB, 51BC, 51BD, 51BE, 51BF, 51EF |
-| AlderLake | AlderLakePCH-SSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.37.7 | 7A80, 7A81, 7A82, 7A83, 7A84, 7A85, 7A86, 7A87, 7A88, 7A8A, 7A8B, 7A8C, 7A8D, 7A8E, 7A8F, 7A90, 7A91, 7A92, 7A93, 7A94, 7A95, 7A96, 7A97, 7A98, 7A99, 7A9A, 7A9B, 7A9C, 7A9D, 7A9E, 7A9F, 7AA0, 7AA1, 7AA3, 7AA4, 7AA7, 7AAF, 7AB0, 7AB1, 7AB2, 7AB3, 7AB4, 7AB5, 7AB6, 7AB7, 7AB8, 7AB9, 7ABA, 7ABB, 7ABC, 7ABD, 7ABE, 7ABF, 7AC0, 7AC1, 7AC2, 7AC3, 7AC4, 7AC5, 7AC6, 7AC7, 7AC8, 7AC9, 7ACA, 7ACB |
-| AlderLake | AlderLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.45.9 | 4601, 4602, 4603, 4609, 460A, 460D, 4610, 4614, 4617, 4618, 4619, 461A, 461B, 461C, 461F, 4621, 4622, 4623, 4629, 462D, 462F, 4630, 4633, 4637, 463B, 463D, 463F, 4640, 4641, 4643, 4644, 4648, 4649, 464C, 464D, 4650, 4653, 4660, 4663, 4664, 4668, 466B, 466C, 466E, 4670, 467D |
+## Naming Legend
 
+### Mainstream Desktop/Mobile
+- **Panther Lake** (15th Gen) · **Lunar Lake** (Core Ultra 200V) · **Arrow Lake** (14th Gen) · **Meteor Lake** (14th Gen) · **Raptor Lake** (13th Gen) · **Alder Lake** (12th Gen)
+- **Rocket Lake** (11th Gen) · **Comet Lake** (10th Gen) · **Ice Lake** (10th Gen) · **Coffee Lake** (8th/9th Gen) · **Kaby Lake** (7th Gen) · **Skylake** (6th Gen)
+- **Broadwell** (5th Gen) · **Haswell** (4th Gen) · **Ivy Bridge** (3rd Gen) · **Sandy Bridge** (2nd Gen)
 
-## AlderLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| AlderLake | AlderLakeDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.45.9 |
-| AlderLake | AlderLakePCH-NDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.50.8 |
-| AlderLake | AlderLakePCH-NSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.50.8 |
-| AlderLake | AlderLakePCH-PDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.36.7 |
-| AlderLake | AlderLakePCH-PSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.36.7 |
-| AlderLake | AlderLakePCH-SSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.37.7 |
-| AlderLake | AlderLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.45.9 |
+### Workstation/Enthusiast
+- **Sapphire Rapids** (W-2400/W-3400) · **Ice Lake-X** (Xeon W-3300) · **Cascade Lake-X** (X299) · **Skylake-X** (X299) · **Broadwell-E** (X99) · **Haswell-E** (X99) · **Ivy Bridge-E** (X79) · **Sandy Bridge-E** (X79)
 
+### Xeon/Server Platforms
+- **Diamond Rapids** · **Emerald Rapids** · **Granite Rapids** · **Sapphire Rapids** · **Ice Lake-SP** · **Cascade Lake** · **Skylake-SP** (Xeon Scalable)
+- **Broadwell-EP** (E5 v4) · **Haswell-EP** (E5 v3) · **Ivy Town** (E5 v2) · **Sandy Bridge-EP** (E5)
+
+### Atom/Low-Power Platforms
+- **Lunar Lake** · **Alder Lake-N** · **Jasper Lake** · **Elkhart Lake** · **Gemini Lake** · **Apollo Lake** · **Cherry Trail** · **Bay Trail**
+
+## Chipset Drivers List
+
+### Pantherlake
+**Generation:** 15th Gen (Panther Lake) – Future Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| PantherLakeSystem.inf | 10.1.20256.8665 | 10.1.56.21 | 02/21/2025* | E300, E301, E302, E303, E304, E305, E306, E307, E308, E309, E30A, E30B, E30C, E30D, E30E, E30F, E310, E311, E312, E313, E314, E315, E316, E317, E318, E319, E31A, E31B, E31C, E31D, E31E, E31F, E322, E323, E348, E362, E363, E37F, E400, E401, E402, E403, E404, E405, E406, E407, E408, E409, E40A, E40B, E40C, E40D, E40E, E40F, E410, E411, E412, E413, E414, E415, E416, E417, E418, E419, E41A, E41B, E41C, E41D, E41E, E41F, E422, E423, E448, E44A, E462, E463, E471 |
+
+*Note: Panther Lake platforms are future releases and currently not detected by public drivers.*
+
+### LunarLake
+**Generation:** Core Ultra 200V Series (Lunar Lake) – Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| LunarLakeSystem.inf | 10.1.20266.8668 | 10.1.48.18 | 02/21/2025* | A822, A823, A848, A862, A863, A871 |
+
+### ArrowLake
+**Generation:** 14th Gen (Arrow Lake) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| ArrowLakeSystem.inf | 10.1.20266.8668 | 10.1.57.5 | 02/21/2025* | 7722, 7723, 7771 |
+
+### MeteorLake
+**Generation:** 14th Gen (Meteor Lake) – Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| MeteorLakeSystem.inf | 10.1.20266.8668 | 10.1.47.12 | 02/21/2025* | 7E22, 7E23, 7E71, 7E7F, AE22, AE23 |
+| MeteorLakePCH-HSystem.inf | 10.1.19913.8607 | 10.1.55.3 | 03/04/2024* | 7E48, 7E49 |
+| MeteorLakePCH-SSystem.inf | 10.1.20266.8668 | 10.1.51.8 | 02/21/2025* | 7F20, 7F21, 7F23, 7F24, 7F2F, 7F58, 7F59, 7F69 |
+
+### RaptorLake
+**Generation:** 13th Gen (Raptor Lake) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| RaptorLakePCH-SSystem.inf | 10.1.20314.8688(S) | 10.1.46.5 | 02/21/2025* | 7A00, 7A01, 7A02, 7A03, 7A04, 7A05, 7A06, 7A07, 7A08, 7A09, 7A0A, 7A0B, 7A0C, 7A0D, 7A0E, 7A0F, 7A10, 7A11, 7A12, 7A13, 7A14, 7A15, 7A16, 7A17, 7A18, 7A19, 7A1A, 7A1B, 7A1C, 7A1D, 7A1E, 7A1F, 7A20, 7A21, 7A23, 7A24, 7A26, 7A27, 7A2F, 7A30, 7A31, 7A32, 7A33, 7A34, 7A35, 7A36, 7A37, 7A38, 7A39, 7A3A, 7A3B, 7A3C, 7A3D, 7A3E, 7A3F, 7A40, 7A41, 7A42, 7A43, 7A44, 7A45, 7A46, 7A47, 7A48, 7A49, 7A4A, 7A4B |
+| RaptorLakeSystem.inf | 10.1.20314.8688(S) | 10.1.49.10 | 02/21/2025* | A70D, A72D, A74D, A77D |
+
+### AlderLake
+**Generation:** 12th Gen (Alder Lake) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| AlderLakeSystem.inf | 10.1.20266.8668 | 10.1.45.9 | 02/21/2025* | 4601, 4602, 4603, 4609, 460A, 460D, 4610, 4614, 4617, 4618, 4619, 461A, 461B, 461C, 461F, 4621, 4622, 4623, 4629, 462D, 462F, 4630, 4633, 4637, 463B, 463D, 463F, 4640, 4641, 4643, 4644, 4648, 4649, 464C, 464D, 4650, 4653, 4660, 4663, 4664, 4668, 466B, 466C, 466E, 4670, 467D |
+| AlderLakeDmaSecExtension.inf | 10.1.20266.8668 | 10.1.45.9 | 02/21/2025* | 460D, 461F, 462D, 462F, 463D, 463F, 464D, 466E |
+| AlderLakePCH-PSystem.inf | 10.1.20266.8668 | 10.1.36.7 | 02/21/2025* | 5180, 5181, 5182, 5183, 5184, 5185, 5186, 5187, 5188, 5189, 518A, 518B, 518C, 518D, 518E, 518F, 5190, 5191, 5192, 5193, 5194, 5195, 5196, 5197, 5198, 5199, 519A, 519B, 519C, 519D, 519E, 519F, 51A0, 51A1, 51A3, 51A4, 51AF, 51B0, 51B1, 51B2, 51B3, 51B4, 51B5, 51B6, 51B7, 51B8, 51B9, 51BA, 51BB, 51BC, 51BD, 51BE, 51BF, 51EF |
+| AlderLakePCH-PDmaSecExtension.inf | 10.1.20266.8668 | 10.1.36.7 | 02/21/2025* | 5180, 5181, 5182, 5183, 5184, 5185, 5186, 5187, 5188, 5189, 518A, 518B, 518C, 518D, 518E, 518F, 5190, 5191, 5192, 5193, 5194, 5195, 5196, 5197, 5198, 5199, 519A, 519B, 519C, 519D, 519E, 519F, 51B0, 51B1, 51B2, 51B3, 51B4, 51B5, 51B6, 51B7, 51B8, 51B9, 51BA, 51BB, 51BC, 51BD, 51BE, 51BF |
+| AlderLakePCH-NSystem.inf | 10.1.20266.8668 | 10.1.50.8 | 02/21/2025* | 5480, 5481, 5482, 5483, 5484, 5485, 5486, 5487, 5488, 5489, 548A, 548B, 548C, 548D, 548E, 548F, 5490, 5491, 5492, 5493, 5494, 5495, 5496, 5497, 5498, 5499, 549A, 549B, 549C, 549D, 549E, 549F, 54A0, 54A1, 54A3, 54A4, 54AF, 54B0, 54B1, 54B2, 54B3, 54B4, 54B5, 54B6, 54B7, 54B8, 54B9, 54BA, 54BB, 54BC, 54BD, 54BE, 54BF, 54EF |
+| AlderLakePCH-NDmaSecExtension.inf | 10.1.20266.8668 | 10.1.50.8 | 02/21/2025* | 5480, 5481, 5482, 5483, 5484, 5485, 5486, 5487, 5488, 5489, 548A, 548B, 548C, 548D, 548E, 548F, 5490, 5491, 5492, 5493, 5494, 5495, 5496, 5497, 5498, 5499, 549A, 549B, 549C, 549D, 549E, 549F, 54B0, 54B1, 54B2, 54B3, 54B4, 54B5, 54B6, 54B7, 54B8, 54B9, 54BA, 54BB, 54BC, 54BD, 54BE, 54BF |
+| AlderLakePCH-SSystem.inf | 10.1.20266.8668 | 10.1.37.7 | 02/21/2025* | 7A80, 7A81, 7A82, 7A83, 7A84, 7A85, 7A86, 7A87, 7A88, 7A8A, 7A8B, 7A8C, 7A8D, 7A8E, 7A8F, 7A90, 7A91, 7A92, 7A93, 7A94, 7A95, 7A96, 7A97, 7A98, 7A99, 7A9A, 7A9B, 7A9C, 7A9D, 7A9E, 7A9F, 7AA0, 7AA1, 7AA3, 7AA4, 7AA7, 7AAF, 7AB0, 7AB1, 7AB2, 7AB3, 7AB4, 7AB5, 7AB6, 7AB7, 7AB8, 7AB9, 7ABA, 7ABB, 7ABC, 7ABD, 7ABE, 7ABF, 7AC0, 7AC1, 7AC2, 7AC3, 7AC4, 7AC5, 7AC6, 7AC7, 7AC8, 7AC9, 7ACA, 7ACB |
+
+### RocketLake
+**Generation:** 11th Gen (Rocket Lake) – Desktop
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| RocketLakeSystem.inf | 10.1.20314.8688(S) | 10.1.41.5 | 02/21/2025* | 4C01, 4C03, 4C05, 4C07, 4C09, 4C11, 4C19, 4C23, 4C33, 4C43, 4C53, 4C63 |
+
+### TigerLake
+**Generation:** 11th Gen (Tiger Lake) – Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| TigerLakePCH-HSystem.inf | 10.1.20314.8688(S) | 10.1.34.13 | 02/21/2025* | 4380, 4381, 4382, 4383, 4384, 4385, 4386, 4387, 4388, 4389, 438A, 438B, 438C, 438D, 438E, 438F, 4390, 4391, 4392, 4393, 4394, 4395, 4396, 4397, 4398, 4399, 439A, 439B, 439C, 439D, 439E, 439F, 43A0, 43A1, 43A2, 43A3, 43A4, 43AF, 43B0, 43B1, 43B2, 43B3, 43B4, 43B5, 43B6, 43B7, 43B8, 43B9, 43BA, 43BB, 43BC, 43BD, 43BE, 43BF, 43C0, 43C1, 43C2, 43C3, 43C4, 43C5, 43C6, 43C7, 43EF |
+| TigerLakePCH-HDmaSecExtension.inf | 10.1.20314.8688(S) | 10.1.34.13 | 02/21/2025* | 4380, 4381, 4382, 4383, 4384, 4385, 4386, 4387, 4388, 4389, 438A, 438B, 438C, 438D, 438E, 438F, 4390, 4391, 4392, 4393, 4394, 4395, 4396, 4397, 4398, 4399, 439A, 439B, 439C, 439D, 439E, 439F, 43B0, 43B1, 43B2, 43B3, 43B4, 43B5, 43B6, 43B7, 43B8, 43B9, 43BA, 43BB, 43BC, 43BD, 43BE, 43BF, 43C0, 43C1, 43C2, 43C3, 43C4, 43C5, 43C6, 43C7 |
+| TigerlakeSystem.inf | 10.1.20266.8668 | 10.1.43.5 | 02/21/2025* | 9A01, 9A02, 9A03, 9A04, 9A05, 9A07, 9A09, 9A0D, 9A0F, 9A11, 9A12, 9A14, 9A23, 9A25, 9A27, 9A29, 9A2B, 9A2D, 9A2F, 9A31, 9A33, 9A35, 9A37, 9A3B, 9A3D, 9A3F |
+| TigerlakeDmaSecExtension.inf | 10.1.20266.8668 | 10.1.43.5 | 02/21/2025* | 9A01, 9A0F, 9A23, 9A25, 9A27, 9A29, 9A2B, 9A2D, 9A2F, 9A31, 9A37, 9A3B, 9A3D, 9A3F |
+| TigerlakePCH-LPSystem.inf | 10.1.20266.8668 | 10.1.24.6 | 02/21/2025* | A080, A081, A082, A083, A084, A085, A086, A087, A088, A089, A08A, A08B, A08C, A08D, A08E, A08F, A090, A091, A092, A093, A094, A095, A096, A097, A098, A099, A09A, A09B, A09C, A09D, A09E, A09F, A0A0, A0A1, A0A3, A0A4, A0A6, A0AC, A0AF, A0B0, A0B1, A0B2, A0B3, A0B4, A0B5, A0B6, A0B7, A0B8, A0B9, A0BA, A0BB, A0BC, A0BD, A0BE, A0BF |
+| TigerlakePCH-LPDmaSecExtension.inf | 10.1.20266.8668 | 10.1.24.6 | 02/21/2025* | A080, A081, A082, A083, A084, A085, A086, A087, A088, A089, A08A, A08B, A08C, A08D, A08E, A08F, A090, A091, A092, A093, A094, A095, A096, A097, A098, A099, A09A, A09B, A09C, A09D, A09E, A09F, A0B0, A0B1, A0B2, A0B3, A0B4, A0B5, A0B6, A0B7, A0B8, A0B9, A0BA, A0BB, A0BC, A0BD, A0BE, A0BF |
+
+### CometLake
+**Generation:** 10th Gen (Comet Lake) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| CometLakePCH-LPSystem.inf | 10.1.20266.8668 | 10.1.27.4 | 02/21/2025* | 0280, 0281, 0282, 0283, 0284, 0285, 0286, 0287, 0288, 0289, 028A, 028B, 028C, 028D, 028E, 028F, 0290, 0291, 0292, 0293, 0294, 0295, 0296, 0297, 0298, 0299, 029A, 029B, 029C, 029D, 029E, 029F, 02A0, 02A1, 02A3, 02A4, 02A8, 02A9, 02AA, 02AB, 02B0, 02B1, 02B2, 02B3, 02B4, 02B5, 02B6, 02B7, 02B8, 02B9, 02BA, 02BB, 02BC, 02BD, 02BE, 02BF, 02C5, 02C6, 02C7, 02E8, 02E9, 02EA, 02EB, 02EF, 02FB |
+| CometLakePCH-LPDmaSecExtension.inf | 10.1.20266.8668 | 10.1.27.4 | 02/21/2025* | 0280, 0281, 0282, 0283, 0284, 0285, 0286, 0287, 0288, 0289, 028A, 028B, 028C, 028D, 028E, 028F, 0290, 0291, 0292, 0293, 0294, 0295, 0296, 0297, 0298, 0299, 029A, 029B, 029C, 029D, 029E, 029F, 02B0, 02B1, 02B2, 02B3, 02B4, 02B5, 02B6, 02B7, 02B8, 02B9, 02BA, 02BB, 02BC, 02BD, 02BE, 02BF |
+| CometLakePCH-HSystem.inf | 10.1.20266.8668 | 10.1.31.2 | 02/21/2025* | 0680, 0681, 0682, 0683, 0684, 0685, 0686, 0687, 0688, 0689, 068A, 068B, 068C, 068D, 068E, 068F, 0690, 0691, 0692, 0693, 0694, 0695, 0696, 0697, 0698, 0699, 069A, 069B, 069C, 069D, 069E, 069F, 06A0, 06A1, 06A3, 06A4, 06A6, 06AC, 06AD, 06AE, 06AF, 06B0, 06B1, 06B2, 06B3, 06B4, 06B5, 06B6, 06B7, 06B8, 06B9, 06BA, 06BB, 06BC, 06BD, 06BE, 06BF, 06C0, 06C1, 06C2, 06C3, 06EF |
+| CometLakeSystem.inf | 10.1.20314.8688(S) | 10.1.30.4 | 02/21/2025* | 9B33, 9B43, 9B44, 9B51, 9B53, 9B54, 9B61, 9B63, 9B64, 9B71 |
+| CometLakePCH-VSystem.inf | 10.1.20314.8688(S) | 10.1.33.5 | 02/21/2025* | A390, A391, A392, A393, A394, A395, A396, A397, A398, A399, A39A, A39B, A39C, A39D, A39E, A39F, A3A0, A3A1, A3A3, A3A4, A3C0, A3C1, A3C2, A3C3, A3C4, A3C5, A3C6, A3C7, A3C8, A3C9, A3CA, A3CB, A3CC, A3CD, A3CE, A3CF, A3D0, A3D1, A3D2, A3D3, A3D4, A3D5, A3D6, A3D7, A3D8, A3D9, A3DA, A3DB, A3DC, A3DD, A3DE, A3DF, A3E7, A3E8, A3E9, A3EA, A3EB, A3EC, A3ED, A3EE, A3F0 |
+
+### IceLake
+**Generation:** 10th Gen (Ice Lake) – Mobile/Server
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| IceLakeXSystem.inf | 10.1.20314.8688(S) | 10.1.26.11 | 02/21/2025* | 0B00, 3349, 3440, 3441, 3442, 3443, 3445, 3446, 3447, 3448, 344A, 344B, 344C, 344D, 3450, 3451, 3452, 3455, 3458, 3459, 345A, 345B, 345C, 345D, 345E, 345F |
+| IceLakePCH-LPSystem.inf | 10.1.20266.8668 | 10.1.12.3 | 02/21/2025* | 3480, 3481, 3482, 3483, 3484, 3485, 3486, 3487, 3488, 3489, 348A, 348B, 348C, 348D, 348E, 348F, 3490, 3491, 3492, 3493, 3494, 3495, 3496, 3497, 3498, 3499, 349A, 349B, 349C, 349D, 349E, 349F, 34A0, 34A1, 34A3, 34A4, 34B0, 34B1, 34B2, 34B3, 34B4, 34B5, 34B6, 34B7, 34B8, 34B9, 34BA, 34BB, 34BC, 34BD, 34BE, 34BF |
+| IceLakePCH-NSystem.inf | 10.1.20266.8668 | 10.1.22.4 | 02/21/2025* | 3880, 3881, 3882, 3883, 3884, 3885, 3886, 3887, 3888, 3889, 388A, 388B, 388C, 388D, 388E, 388F, 3890, 3891, 3892, 3893, 3894, 3895, 3896, 3897, 3898, 3899, 389A, 389B, 389C, 389D, 389E, 389F, 38A0, 38A1, 38A3, 38A4, 38A6, 38B8, 38B9, 38BA, 38BB, 38BC, 38BD, 38BE, 38BF |
+| IceLakeSystemThermal.inf | 10.1.20266.8668 | 10.1.20.5 | 02/21/2025* | 8A03 |
+
+### CoffeeLake
+**Generation:** 8th/9th Gen (Coffee Lake) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| CoffeelakeSystem.inf | 10.1.20314.8688(S) | 10.1.14.8 | 02/21/2025* | 3E0F, 3E10, 3E18, 3E1F, 3E20, 3E30, 3E31, 3E32, 3E33, 3E34, 3E35, 3E81, 3E85, 3E89, 3EC2, 3EC4, 3EC6, 3ECA, 3ECC, 3ED0 |
+
+### KabyLake
+**Generation:** 7th Gen (Kaby Lake) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| KabylakeSystem.inf | 10.1.20314.8688(S) | 10.1.10.5 | 02/21/2025* | 5900, 5901, 5904, 5905, 5909, 590C, 590D, 590F, 5910, 5914, 5918, 591F |
+| KabyLakePCH-HSystem.inf | 10.1.20314.8688(S) | 10.1.11.5 | 02/21/2025* | A290, A291, A292, A293, A294, A295, A296, A297, A298, A299, A29A, A29B, A29C, A29D, A29E, A29F, A2A0, A2A1, A2A3, A2C0, A2C1, A2C2, A2C3, A2C4, A2C5, A2C6, A2C7, A2C8, A2C9, A2CA, A2CB, A2CC, A2CD, A2CE, A2CF, A2D0, A2D1, A2D2, A2D3, A2D4, A2D5, A2D6, A2D7, A2D8, A2D9, A2DA, A2DB, A2DC, A2DD, A2DE, A2DF, A2E7, A2E8, A2E9, A2EA, A2EB, A2EC, A2ED, A2EE |
+
+### Skylake
+**Generation:** 6th Gen (Skylake) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| SkylakeSystem.inf | 10.1.20314.8688(S) | 10.1.7.4 | 02/21/2025* | 1900, 1901, 1905, 1909, 190F, 1910, 191F |
+| Skylake-ESystem.inf | 10.1.20314.8688(S) | 10.1.8.8 | 02/21/2025* | 2014, 2015, 2016, 2018, 201A, 201C, 2020, 2021, 2024, 2025, 2026, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 203A, 203D, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2047, 2048, 2049, 204A, 204B, 204C, 204D, 204E, 2054, 2055, 2056, 2057, 2058, 2059, 205A, 205B, 2066, 2068, 2069, 206A, 206B, 206C, 206D, 206E, 206F, 2078, 207A, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2088, 208D, 208E |
+
+### Broadwell
+**Generation:** 5th Gen (Broadwell) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| BroadwellSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 1600, 1601, 1604, 1605, 1608, 1609 |
+
+### BroadwellDe
+**Generation:** X99 / C610 Series – Enthusiast/Workstation (Broadwell-E/EP)
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| Broadwell-DESystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 0C50, 0C51, 0C52, 0C53, 6F00, 6F01, 6F02, 6F03, 6F04, 6F05, 6F06, 6F07, 6F08, 6F09, 6F0A, 6F0B, 6F0D, 6F0E, 6F10, 6F11, 6F12, 6F13, 6F14, 6F15, 6F16, 6F17, 6F18, 6F19, 6F1A, 6F1B, 6F1C, 6F1D, 6F1E, 6F1F, 6F20, 6F21, 6F22, 6F23, 6F24, 6F25, 6F26, 6F27, 6F28, 6F29, 6F2A, 6F2C, 6F30, 6F32, 6F33, 6F34, 6F36, 6F37, 6F38, 6F39, 6F3A, 6F3E, 6F3F, 6F40, 6F41, 6F43, 6F45, 6F46, 6F47, 6F50, 6F51, 6F52, 6F53, 6F60, 6F68, 6F6A, 6F6B, 6F6C, 6F6D, 6F6E, 6F6F, 6F70, 6F71, 6F76, 6F78, 6F79, 6F7D, 6F7E, 6F80, 6F81, 6F83, 6F85, 6F86, 6F87, 6F88, 6F8A, 6F90, 6F93, 6F95, 6F96, 6F98, 6F99, 6F9A, 6F9C, 6FA0, 6FA8, 6FAA, 6FAB, 6FAC, 6FAD, 6FAE, 6FAF, 6FB0, 6FB1, 6FB2, 6FB3, 6FB4, 6FB5, 6FB6, 6FB7, 6FB8, 6FB9, 6FBA, 6FBB, 6FBC, 6FBD, 6FBE, 6FBF, 6FC0, 6FC1, 6FC2, 6FC3, 6FC4, 6FC5, 6FC6, 6FC7, 6FC8, 6FC9, 6FCA, 6FCB, 6FCC, 6FCD, 6FCE, 6FCF, 6FD0, 6FD1, 6FD2, 6FD3, 6FD4, 6FD5, 6FD6, 6FD7, 6FE0, 6FE1, 6FE2, 6FE3, 6FE4, 6FE5, 6FE6, 6FE7, 6FE8, 6FE9, 6FEA, 6FEB, 6FEC, 6FED, 6FEE, 6FEF, 6FF0, 6FF1, 6FF2, 6FF3, 6FF4, 6FF5, 6FF6, 6FF7, 6FF8, 6FF9, 6FFA, 6FFB, 6FFC, 6FFD, 6FFE |
+
+### Haswell
+**Generation:** 4th Gen (Haswell) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| HaswellSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 0C00, 0C01, 0C04, 0C05, 0C08, 0C09 |
+
+### HaswellE
+**Generation:** X99 / C610 Series – Enthusiast/Workstation (Haswell-E/EP)
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| HaswellESystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 2F00, 2F01, 2F02, 2F03, 2F04, 2F05, 2F06, 2F07, 2F08, 2F09, 2F0A, 2F0B, 2F10, 2F11, 2F12, 2F13, 2F14, 2F15, 2F16, 2F17, 2F18, 2F19, 2F1A, 2F1B, 2F1C, 2F1D, 2F1E, 2F1F, 2F20, 2F21, 2F22, 2F23, 2F24, 2F25, 2F26, 2F27, 2F28, 2F29, 2F2A, 2F2C, 2F2E, 2F2F, 2F30, 2F32, 2F33, 2F34, 2F36, 2F37, 2F38, 2F39, 2F3A, 2F3E, 2F3F, 2F40, 2F41, 2F43, 2F45, 2F46, 2F47, 2F60, 2F68, 2F6A, 2F6B, 2F6C, 2F6D, 2F6E, 2F6F, 2F70, 2F71, 2F76, 2F78, 2F79, 2F7D, 2F7E, 2F80, 2F81, 2F83, 2F85, 2F86, 2F87, 2F88, 2F8A, 2F90, 2F93, 2F95, 2F96, 2F98, 2F99, 2F9A, 2FA0, 2FA8, 2FAA, 2FAB, 2FAC, 2FAD, 2FAE, 2FAF, 2FB0, 2FB1, 2FB2, 2FB3, 2FB4, 2FB5, 2FB6, 2FB7, 2FB8, 2FB9, 2FBA, 2FBB, 2FBC, 2FBD, 2FBE, 2FBF, 2FC0, 2FC1, 2FC2, 2FC3, 2FC4, 2FC5, 2FD0, 2FD1, 2FD2, 2FD3, 2FD4, 2FD5, 2FD6, 2FD7, 2FE0, 2FE1, 2FE2, 2FE3, 2FE4, 2FE5, 2FE6, 2FE7, 2FE8, 2FE9, 2FEA, 2FEB, 2FEC, 2FED, 2FEE, 2FEF, 2FF0, 2FF1, 2FF2, 2FF3, 2FF4, 2FF5, 2FF6, 2FF7, 2FF8, 2FF9, 2FFA, 2FFB, 2FFC, 2FFD, 2FFE |
+
+### Ivybridge
+**Generation:** 3rd Gen (Ivy Bridge) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| IvyBridgeSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 0150, 0151, 0154, 0155, 0158, 0159, 015C, 015D |
+
+### IvyTown
+**Generation:** Xeon E5 v2 (Ivy Town) – Server
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| IvyTownSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 0E00, 0E01, 0E02, 0E03, 0E04, 0E05, 0E06, 0E07, 0E08, 0E09, 0E0A, 0E0B, 0E10, 0E13, 0E17, 0E18, 0E1C, 0E1D, 0E1E, 0E1F, 0E20, 0E21, 0E22, 0E23, 0E24, 0E25, 0E26, 0E27, 0E28, 0E29, 0E2A, 0E2C, 0E2E, 0E2F, 0E30, 0E32, 0E33, 0E34, 0E36, 0E37, 0E38, 0E3A, 0E3E, 0E3F, 0E40, 0E41, 0E43, 0E44, 0E45, 0E47, 0E60, 0E68, 0E6A, 0E6B, 0E6C, 0E6D, 0E71, 0E74, 0E75, 0E77, 0E79, 0E7D, 0E7F, 0E80, 0E81, 0E83, 0E84, 0E85, 0E87, 0E90, 0E93, 0E94, 0E95, 0EA0, 0EA8, 0EAA, 0EAB, 0EAC, 0EAD, 0EAE, 0EAF, 0EB0, 0EB1, 0EB2, 0EB3, 0EB4, 0EB5, 0EB6, 0EB7, 0EBC, 0EBE, 0EBF, 0EC0, 0EC1, 0EC2, 0EC3, 0EC4, 0EC8, 0EC9, 0ECA, 0ED8, 0ED9, 0EDC, 0EDD, 0EDE, 0EDF, 0EE0, 0EE1, 0EE2, 0EE3, 0EE4, 0EE5, 0EE6, 0EE7, 0EE8, 0EE9, 0EEA, 0EEB, 0EEC, 0EED, 0EEE, 0EF0, 0EF1, 0EF2, 0EF3, 0EF4, 0EF5, 0EF6, 0EF7, 0EF8, 0EF9, 0EFA, 0EFB, 0EFC, 0EFD |
+
+### Sandybridge
+**Generation:** 2nd Gen (Sandy Bridge) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| SandyBridgeSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 0100, 0101, 0104, 0105, 0108, 0109, 010D |
+
+### SapphireRapids
+**Generation:** Xeon Scalable 4th Gen (Sapphire Rapids) – Server
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| SapphireRapidsSystem.inf | 10.1.20314.8688(S) | 10.1.39.10 | 02/21/2025* | 0998, 0B23, 0B25, 0CFE, 2710, 3240, 3241, 3242, 3245, 3246, 3247, 324A, 324C, 324D, 3250, 3251, 3252, 3255, 3258, 3259, 325A, 325B, 325C, 325D, 325E, 325F |
+
+### GraniteRapids
+**Generation:** Xeon 6th Gen (Granite Rapids) – Server
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| GraniteRapidsSystem.inf | 10.1.20314.8688(S) | 10.1.52.12 | 02/21/2025* | 2714, 3256, 5794, 5796, 57C2 |
+
+### Server_common
+**Generation:** Server Common Infrastructure
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| Server_CommonSystem.inf | 10.1.20314.8688(S) | 10.1.42.12 | 02/21/2025* | 0000, 09A2, 09A3, 09A4, 09A5, 09A6, 09A7, 2880, 344F, 3457, 347A, 347B, 347C, 347D, 347E |
+
+### EmeraldRapids
+**Generation:** Xeon Scalable 5th Gen (Emerald Rapids) – Server
+
+*Note: Emerald Rapids uses Sapphire Rapids infrastructure with updated microcode*
+
+### ElkhartLake
+**Generation:** Atom (Elkhart Lake) – Embedded/IoT
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| ElkhartLakeSystem.inf | 10.1.20266.8668 | 10.1.25.6 | 02/21/2025* | 4B00, 4B01, 4B20, 4B21, 4B23, 4B24, 4B38, 4B39, 4B3A, 4B3B, 4B3C, 4B3D, 4B3E, 4B4A, 4B7F |
+
+### JasperLake
+**Generation:** Atom (Jasper Lake) – Embedded/IoT
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| JasperLakePCH-NSystem.inf | 10.1.20266.8668 | 10.1.32.3 | 02/21/2025* | 4D80, 4D81, 4D82, 4D83, 4D84, 4D85, 4D86, 4D87, 4D88, 4D89, 4D8A, 4D8B, 4D8C, 4D8D, 4D8E, 4D8F, 4D90, 4D91, 4D92, 4D93, 4D94, 4D95, 4D96, 4D97, 4D98, 4D99, 4D9A, 4D9B, 4D9C, 4D9D, 4D9E, 4D9F, 4DA0, 4DA1, 4DA3, 4DA4, 4DB8, 4DB9, 4DBA, 4DBB, 4DBC, 4DBD, 4DBE, 4DBF, 4DEF |
+| JasperLake+System.inf | 10.1.20266.8668 | 10.1.29.4 | 02/21/2025* | 4E00, 4E03, 4E10, 4E12, 4E14, 4E19, 4E20, 4E22, 4E24, 4E26, 4E28, 4E30, 4E40, 4E41, 4E50, 4E51, 4E60, 4E70, 4E71 |
+
+### GeminiLake
+**Generation:** Atom (Gemini Lake) – Embedded/IoT
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| GeminilakeSystem.inf | 10.1.20266.8668 | 10.1.13.4 | 02/21/2025* | 3192, 31D4, 31D6, 31D7, 31D8, 31D9, 31DA, 31DB, 31E8, 31F0 |
+
+### ApolloLake
+**Generation:** Atom (Apollo Lake) – Embedded/IoT
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| ApolloLakeSystem.inf | 10.1.20266.8668 | 10.1.17.4 | 02/21/2025* | 5AD4, 5AD6, 5AD7, 5AD8, 5AD9, 5ADA, 5ADB, 5AE8, 5AF0 |
+
+### BaytrailI
+**Generation:** Atom (Bay Trail) – Embedded/IoT
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| Baytrail-ISystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 0F08, 0F09, 0F18 |
+
+### Braswell
+**Generation:** Atom (Braswell) – Embedded/IoT
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| BraswellSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 2292 |
+
+### Valleyview2
+**Generation:** Atom (Valleyview 2) – Embedded/IoT
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| ValleyView2System.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 0F00, 0F12, 0F1C, 0F48, 0F4A, 0F4C, 0F4E |
+
+### CannonLake
+**Generation:** 10th Gen (Early) – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| CannonLake-LPSystem.inf | 10.1.20266.8668 | 10.1.15.7 | 02/21/2025* | 9D80, 9D81, 9D82, 9D83, 9D84, 9D85, 9D86, 9D87, 9D88, 9D89, 9D8A, 9D8B, 9D8C, 9D8D, 9D8E, 9D8F, 9D90, 9D91, 9D92, 9D93, 9D94, 9D95, 9D96, 9D97, 9D98, 9D99, 9D9A, 9D9B, 9D9C, 9D9D, 9D9E, 9D9F, 9DA0, 9DA1, 9DA3, 9DA4, 9DB0, 9DB1, 9DB2, 9DB3, 9DB4, 9DB5, 9DB6, 9DB7, 9DB8, 9DB9, 9DBA, 9DBB, 9DBC, 9DBD, 9DBE, 9DBF |
+| CannonLake-HSystem.inf | 10.1.20314.8688(S) | 10.1.16.8 | 02/21/2025* | A300, A301, A302, A303, A304, A305, A306, A307, A308, A309, A30A, A30B, A30C, A30D, A30E, A30F, A310, A311, A312, A313, A314, A315, A316, A317, A318, A319, A31A, A31B, A31C, A31D, A31E, A31F, A320, A321, A323, A324, A32C, A32D, A32E, A32F, A330, A331, A332, A333, A334, A335, A336, A337, A338, A339, A33A, A33B, A33C, A33D, A33E, A33F, A340, A341, A342, A343 |
+
+### Lakefield
+**Generation:** Hybrid Architecture – Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| LakeFieldSystem.inf | 10.1.20266.8668 | 10.1.28.2 | 02/21/2025* | 9880, 9881, 9882, 9883, 9884, 9885, 9886, 9887, 9888, 9889, 988A, 988B, 988C, 988D, 988E, 988F, 9890, 9891, 9892, 9893, 9894, 9895, 9896, 9897, 9898, 9899, 989A, 989B, 989C, 989D, 989E, 989F, 98A0, 98A1, 98A4, 98B8, 98B9, 98BA, 98BB, 98BC, 98EF |
+
+### Denverton
+**Generation:** Atom Server – Embedded/Networking
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| DenvertonSystem.inf | 10.1.20314.8688(S) | 10.1.19.2 | 02/21/2025* | 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 198A, 198B, 198C, 198D, 198E, 198F, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 199A, 199B, 199C, 199D, 199E, 199F, 19A2, 19A4, 19A5, 19A6, 19A7, 19A8, 19A9, 19AA, 19AB, 19AC, 19D1, 19D2, 19DC, 19DE, 19DF, 19E0, 19E1, 19E2 |
+
+### Lewisburg
+**Generation:** C620 Series – Server/Workstation
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| LewisburgSystem.inf | 10.1.20314.8688(S) | 10.1.9.6 | 02/21/2025* | 37C8, A190, A191, A192, A193, A194, A195, A196, A197, A198, A199, A19A, A19B, A19C, A19D, A19E, A19F, A1A1, A1A3, A1A4, A1B1, A1BA, A1BB, A1BC, A1BD, A1BE, A1C0, A1C1, A1C2, A1C3, A1C4, A1C5, A1C6, A1C7, A1E7, A1E8, A1E9, A1EA, A1EC, A1ED, A1F8, A1F9, A1FC, A210, A211, A212, A213, A214, A215, A216, A217, A218, A219, A21A, A21B, A21C, A21D, A21E, A21F, A221, A223, A224, A231, A23A, A23B, A23C, A23D, A23E, A240, A241, A242, A243, A244, A245, A246, A247, A267, A268, A269, A26A, A26C, A26D, A278, A279, A27C |
+
+### Emmitsburg
+**Generation:** C621A/C627A – Server
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| EmmitsburgSystem.inf | 10.1.20314.8688(S) | 10.1.40.6 | 02/21/2025* | 1B80, 1BB0, 1BB1, 1BB2, 1BB3, 1BB4, 1BB5, 1BB8, 1BB9, 1BBA, 1BBB, 1BBC, 1BBD, 1BBE, 1BBF, 1BC6, 1BC7, 1BC9, 1BCA, 1BCC, 1BCE, 1BE6, 1BFF |
+
+### CedarFork
+**Generation:** Embedded – IoT/Industrial
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| CedarForkSystem.inf | 10.1.20314.8688(S) | 10.1.21.10 | 02/21/2025* | 18A0, 18A2, 18A4, 18A5, 18A6, 18A7, 18A8, 18A9, 18AA, 18AB, 18AC, 18AD, 18AE, 18AF, 18D3, 18D4, 18D6, 18D9, 18DC, 18DD, 18DE, 18DF, 18E0, 18E1, 18EC, 18EE |
+
+### Knightslanding
+**Generation:** Xeon Phi – HPC
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| KnightsLandingSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 7801, 7808, 7809, 780A, 780B, 780C, 780D, 7810, 7812, 7813, 7814, 7816, 7817, 781A, 781B, 781C, 781F, 7820, 7821, 7822, 7823, 7824, 7825, 7826, 782A, 782B, 782C, 782D, 782E, 782F, 7830, 7831, 7832, 7833, 7834, 7835, 7836, 7837, 7838, 7839, 7840, 7841, 7842, 7843, 7844, 7845, 7846, 7847, 7848, 7849 |
+
+### Avoton
+**Generation:** Atom Server – Embedded
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| AvotonSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 1F00, 1F01, 1F02, 1F03, 1F04, 1F05, 1F06, 1F07, 1F08, 1F09, 1F0A, 1F0B, 1F0C, 1F0D, 1F0E, 1F0F, 1F10, 1F11, 1F12, 1F13, 1F14, 1F15, 1F16, 1F18, 1F19, 1F38, 1F39, 1F3A, 1F3B, 1F3C, 1F3D |
+
+### ColetoCreek
+**Generation:** Communications – Networking
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| ColetoCreekSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 23B1, 23E0 |
+
+### Cougarpoint
+**Generation:** 6 Series – Desktop
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| CougarPointSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 1C10, 1C12, 1C14, 1C16, 1C18, 1C1A, 1C1C, 1C1E, 1C22, 1C24, 1C25, 1C40, 1C41, 1C42, 1C43, 1C44, 1C46, 1C47, 1C49, 1C4A, 1C4B, 1C4C, 1C4D, 1C4E, 1C4F, 1C50, 1C52, 1C54, 1C56, 1C58, 1C59, 1C5A, 1C5C |
+
+### Crystalwell
+**Generation:** 4th Gen with Iris Pro – Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| CrystalwellSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 0D00, 0D01, 0D05, 0D09 |
+
+### Jaketown
+**Generation:** Xeon E5 v1 – Server
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| JaketownSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 3C00, 3C01, 3C02, 3C03, 3C04, 3C05, 3C06, 3C07, 3C08, 3C09, 3C0A, 3C0B, 3C0D, 3C0E, 3C0F, 3C20, 3C21, 3C22, 3C23, 3C24, 3C25, 3C26, 3C27, 3C28, 3C2A, 3C2C, 3C2E, 3C2F, 3C40, 3C41, 3C42, 3C43, 3C44, 3C45, 3C46, 3C71, 3C80, 3C83, 3C84, 3C86, 3C90, 3C93, 3C94, 3C96, 3CA0, 3CA8, 3CAA, 3CAB, 3CAC, 3CAD, 3CAE, 3CB0, 3CB1, 3CB2, 3CB3, 3CB4, 3CB5, 3CB6, 3CB7, 3CB8, 3CC0, 3CC1, 3CC2, 3CD0, 3CE0, 3CE3, 3CE4, 3CE6, 3CE8, 3CE9, 3CEA, 3CEB, 3CEC, 3CED, 3CEE, 3CEF, 3CF4, 3CF5, 3CF6 |
+
+### Kaseyville
+**Generation:** Communications – Networking
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| KaseyvilleSystem.inf | 10.1.20314.8688(S) | 10.1.53.11 | 02/21/2025* | 11FB |
+
+### LynxPoint
+**Generation:** 8 Series – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| LynxPointSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 8C10, 8C11, 8C12, 8C13, 8C14, 8C15, 8C16, 8C17, 8C18, 8C19, 8C1A, 8C1B, 8C1C, 8C1D, 8C1E, 8C1F, 8C22, 8C23, 8C24, 8C40, 8C41, 8C42, 8C44, 8C46, 8C49, 8C4A, 8C4B, 8C4C, 8C4E, 8C4F, 8C50, 8C52, 8C54, 8C56, 8C58, 8C5C |
+| Lynxpoint-HRefreshSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 8C90, 8C92, 8C94, 8C96, 8C98, 8C9A, 8C9C, 8C9E, 8CA2, 8CA4, 8CC1, 8CC2, 8CC3, 8CC4, 8CC5, 8CC6 |
+| LynxPointLPSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 9C10, 9C11, 9C12, 9C13, 9C14, 9C15, 9C16, 9C17, 9C18, 9C19, 9C1A, 9C1B, 9C1C, 9C1D, 9C1E, 9C1F, 9C22, 9C23, 9C24, 9C40, 9C41, 9C42, 9C43, 9C44, 9C45, 9C46, 9C47, 9C48, 9C49, 9C4A, 9C4B, 9C4C, 9C4D, 9C4E, 9C4F, 9C50, 9C51, 9C52, 9C53, 9C54, 9C55, 9C56, 9C57, 9C58, 9C59, 9C5A, 9C5B, 9C5C, 9C5D, 9C5E, 9C5F |
+
+### Pantherpoint
+**Generation:** 7 Series – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| PantherPointSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 1E10, 1E12, 1E14, 1E16, 1E18, 1E1A, 1E1C, 1E1E, 1E22, 1E24, 1E25, 1E31, 1E41, 1E42, 1E43, 1E44, 1E46, 1E47, 1E48, 1E49, 1E4A, 1E53, 1E55, 1E56, 1E57, 1E58, 1E59, 1E5B, 1E5D, 1E5E, 1E5F |
+
+### SunrisePoint
+**Generation:** 100 Series – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| SunrisePoint-LPSystem.inf | 10.1.20266.8668 | 10.1.5.3 | 02/21/2025* | 9D10, 9D11, 9D12, 9D13, 9D14, 9D15, 9D16, 9D17, 9D18, 9D19, 9D1A, 9D1B, 9D21, 9D23, 9D24, 9D41, 9D43, 9D46, 9D48, 9D4B, 9D4E, 9D50, 9D51, 9D53, 9D56, 9D58 |
+| SunrisePoint-HSystem.inf | 10.1.20314.8688(S) | 10.1.6.3 | 02/21/2025* | A110, A111, A112, A113, A114, A115, A116, A117, A118, A119, A11A, A11B, A11C, A11D, A11E, A11F, A120, A121, A123, A124, A126, A141, A142, A143, A144, A145, A146, A147, A148, A149, A14A, A14B, A14C, A14D, A14E, A150, A151, A152, A153, A154, A155, A167, A168, A169, A16A |
+
+### Wellsburg
+**Generation:** X99 Series – Enthusiast
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| WellsburgSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 8D10, 8D11, 8D12, 8D13, 8D14, 8D15, 8D16, 8D17, 8D18, 8D19, 8D1A, 8D1B, 8D1C, 8D1D, 8D1E, 8D1F, 8D22, 8D24, 8D40, 8D41, 8D42, 8D43, 8D44, 8D45, 8D46, 8D47, 8D48, 8D49, 8D4A, 8D4B, 8D4C, 8D4D, 8D4E, 8D4F, 8D50, 8D51, 8D52, 8D53, 8D54, 8D55, 8D56, 8D57, 8D58, 8D59, 8D5A, 8D5B, 8D5C, 8D5D, 8D5E, 8D5F, 8D7C, 8D7D, 8D7E, 8D7F |
+
+### WildcatPoint
+**Generation:** 9 Series – Desktop/Mobile
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| WildcatPointLPSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 9C90, 9C92, 9C94, 9C96, 9C98, 9C9A, 9CA2, 9CA4, 9CC1, 9CC2, 9CC3, 9CC5, 9CC6, 9CC7, 9CC9 |
+
+### Patsburg
+**Generation:** X79 Series – Enthusiast
+
+| Driver | Package | Version | Date | HW_IDs |
+|--------|---------|---------|------|--------|
+| PatsburgSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021* | 1D10, 1D11, 1D12, 1D13, 1D14, 1D15, 1D16, 1D17, 1D18, 1D19, 1D1A, 1D1B, 1D1C, 1D1D, 1D1E, 1D1F, 1D22, 1D24, 1D25, 1D3E, 1D3F, 1D40, 1D41, 1D70, 1D71, 1D72, 1D73, 1D74, 1D76, 1D77 |
 
 ---
 
-## Apollolake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Apollolake | ApolloLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.17.4 | 5AD4, 5AD6, 5AD7, 5AD8, 5AD9, 5ADA, 5ADB, 5AE8, 5AF0 |
+**Note on package versions:** Intel occasionally releases driver packages in two variants: consumer (without suffix) and server (with 'S' suffix). Each variant includes slightly different drivers optimized for their respective platforms. In this list, we denote the server variant with the 'S' suffix to distinguish it from the consumer version. For example, version `10.1.20314.8688` was released only as a server variant (hence marked as `10.1.20314.8688S`), but historically there have been cases where the same version number was used for both consumer and server packages. We consistently mark the server variants to avoid confusion.
 
+*Dates marked with `*` indicate no driver date was provided; the installer package certificate date was used instead.*
 
-## Apollolake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Apollolake | ApolloLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.17.4 |
-
-
----
-
-## ArrowLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| ArrowLake | ArrowLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.57.5 | 7722, 7723, 7771 |
-
-
-## ArrowLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| ArrowLake | ArrowLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.57.5 |
-
-
----
-
-## Avoton
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Avoton | AvotonSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 1F00, 1F01, 1F02, 1F03, 1F04, 1F05, 1F06, 1F07, 1F08, 1F09, 1F0A, 1F0B, 1F0C, 1F0D, 1F0E, 1F0F, 1F10, 1F11, 1F12, 1F13, 1F14, 1F15, 1F16, 1F18, 1F19, 1F38, 1F39, 1F3A, 1F3B, 1F3C, 1F3D |
-| Avoton | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 | 1F16, 1F18 |
-
-
-## Avoton — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Avoton | AvotonSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-| Avoton | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-
-
----
-
-## BaytrailI
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| BaytrailI | Baytrail-ISystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 0F08, 0F09, 0F18 |
-
-
-## BaytrailI — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| BaytrailI | Baytrail-ISystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## Braswell
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Braswell | BraswellSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 2292 |
-
-
-## Braswell — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Braswell | BraswellSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## Broadwell
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Broadwell | BroadwellSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 1600, 1601, 1604, 1605, 1608, 1609 |
-
-
-## Broadwell — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Broadwell | BroadwellSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## BroadwellDe
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| BroadwellDe | Broadwell-DESystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 0C50, 0C51, 0C52, 0C53, 6F00, 6F01, 6F02, 6F03, 6F04, 6F05, 6F06, 6F07, 6F08, 6F09, 6F0A, 6F0B, 6F0D, 6F0E, 6F10, 6F11, 6F12, 6F13, 6F14, 6F15, 6F16, 6F17, 6F18, 6F19, 6F1A, 6F1B, 6F1C, 6F1D, 6F1E, 6F1F, 6F20, 6F21, 6F22, 6F23, 6F24, 6F25, 6F26, 6F27, 6F28, 6F29, 6F2A, 6F2C, 6F30, 6F32, 6F33, 6F34, 6F36, 6F37, 6F38, 6F39, 6F3A, 6F3E, 6F3F, 6F40, 6F41, 6F43, 6F45, 6F46, 6F47, 6F50, 6F51, 6F52, 6F53, 6F60, 6F68, 6F6A, 6F6B, 6F6C, 6F6D, 6F6E, 6F6F, 6F70, 6F71, 6F76, 6F78, 6F79, 6F7D, 6F7E, 6F80, 6F81, 6F83, 6F85, 6F86, 6F87, 6F88, 6F8A, 6F90, 6F93, 6F95, 6F96, 6F98, 6F99, 6F9A, 6F9C, 6FA0, 6FA8, 6FAA, 6FAB, 6FAC, 6FAD, 6FAE, 6FAF, 6FB0, 6FB1, 6FB2, 6FB3, 6FB4, 6FB5, 6FB6, 6FB7, 6FB8, 6FB9, 6FBA, 6FBB, 6FBC, 6FBD, 6FBE, 6FBF, 6FC0, 6FC1, 6FC2, 6FC3, 6FC4, 6FC5, 6FC6, 6FC7, 6FC8, 6FC9, 6FCA, 6FCB, 6FCC, 6FCD, 6FCE, 6FCF, 6FD0, 6FD1, 6FD2, 6FD3, 6FD4, 6FD5, 6FD6, 6FD7, 6FE0, 6FE1, 6FE2, 6FE3, 6FE4, 6FE5, 6FE6, 6FE7, 6FE8, 6FE9, 6FEA, 6FEB, 6FEC, 6FED, 6FEE, 6FEF, 6FF0, 6FF1, 6FF2, 6FF3, 6FF4, 6FF5, 6FF6, 6FF7, 6FF8, 6FF9, 6FFA, 6FFB, 6FFC, 6FFD, 6FFE |
-| BroadwellDe | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 | 0C50, 0C51, 0C52, 0C53, 6F0D, 6F0E, 6F10, 6F11, 6F12, 6F13, 6F14, 6F15, 6F16, 6F17, 6F18, 6F19, 6F1A, 6F1B, 6F1C, 6F1D, 6F1E, 6F1F, 6F20, 6F21, 6F22, 6F23, 6F24, 6F25, 6F26, 6F27, 6F28, 6F29, 6F2A, 6F2C, 6F30, 6F32, 6F33, 6F34, 6F36, 6F37, 6F38, 6F39, 6F3A, 6F40, 6F43, 6F45, 6F46, 6F47, 6F50, 6F51, 6F52, 6F53, 6F60, 6F68, 6F6A, 6F6B, 6F6C, 6F6D, 6F6E, 6F6F, 6F70, 6F71, 6F76, 6F78, 6F79, 6F7D, 6F80, 6F81, 6F83, 6F85, 6F86, 6F87, 6F88, 6F8A, 6F90, 6F93, 6F95, 6F96, 6F98, 6F99, 6F9A, 6F9C, 6FA0, 6FA8, 6FAA, 6FAB, 6FAC, 6FAD, 6FAE, 6FAF, 6FB0, 6FB1, 6FB2, 6FB3, 6FB4, 6FB5, 6FB6, 6FB7, 6FB8, 6FB9, 6FBA, 6FBB, 6FBC, 6FBD, 6FBE, 6FBF, 6FC0, 6FC1, 6FC2, 6FC3, 6FC4, 6FC5, 6FC6, 6FC7, 6FC8, 6FC9, 6FCA, 6FCB, 6FCC, 6FCD, 6FCE, 6FCF, 6FD0, 6FD1, 6FD2, 6FD3, 6FD4, 6FD5, 6FD6, 6FD7, 6FE0, 6FE1, 6FE2, 6FE3, 6FE4, 6FE5, 6FE6, 6FE7, 6FE8, 6FE9, 6FEA, 6FEB, 6FEC, 6FED, 6FEE, 6FEF, 6FF0, 6FF1, 6FF2, 6FF3, 6FF4, 6FF5, 6FF8, 6FF9, 6FFA, 6FFB, 6FFC, 6FFD, 6FFE |
-| BroadwellDe | broadwell-deSystem | 10.1.2.8 | 07/01/2015 | 10.1.2.8 | 0C50, 0C51, 0C52, 0C53, 6F00, 6F01, 6F02, 6F03, 6F04, 6F05, 6F06, 6F07, 6F08, 6F09, 6F0A, 6F0B, 6F0D, 6F0E, 6F10, 6F11, 6F12, 6F13, 6F14, 6F15, 6F16, 6F17, 6F18, 6F19, 6F1A, 6F1B, 6F1C, 6F1D, 6F1E, 6F1F, 6F20, 6F21, 6F22, 6F23, 6F24, 6F25, 6F26, 6F27, 6F28, 6F29, 6F2A, 6F2C, 6F30, 6F32, 6F33, 6F34, 6F36, 6F37, 6F38, 6F39, 6F3A, 6F3E, 6F3F, 6F40, 6F41, 6F43, 6F45, 6F46, 6F47, 6F50, 6F51, 6F52, 6F53, 6F60, 6F68, 6F6A, 6F6B, 6F6C, 6F6D, 6F6E, 6F6F, 6F70, 6F71, 6F76, 6F78, 6F79, 6F7D, 6F7E, 6F80, 6F81, 6F83, 6F85, 6F86, 6F87, 6F88, 6F8A, 6F90, 6F93, 6F95, 6F96, 6F98, 6F99, 6F9A, 6F9C, 6FA0, 6FA8, 6FAA, 6FAB, 6FAC, 6FAD, 6FAE, 6FAF, 6FB0, 6FB1, 6FB2, 6FB3, 6FB4, 6FB5, 6FB6, 6FB7, 6FB8, 6FB9, 6FBA, 6FBB, 6FBC, 6FBD, 6FBE, 6FBF, 6FC0, 6FC1, 6FC2, 6FC3, 6FC4, 6FC5, 6FC6, 6FC7, 6FC8, 6FC9, 6FCA, 6FCB, 6FCC, 6FCD, 6FCE, 6FCF, 6FD0, 6FD1, 6FD2, 6FD3, 6FD4, 6FD5, 6FD6, 6FD7, 6FE0, 6FE1, 6FE2, 6FE3, 6FE4, 6FE5, 6FE6, 6FE7, 6FE8, 6FE9, 6FEA, 6FEB, 6FEC, 6FED, 6FEE, 6FEF, 6FF0, 6FF1, 6FF2, 6FF3, 6FF4, 6FF5, 6FF8, 6FF9, 6FFA, 6FFB, 6FFC, 6FFD, 6FFE |
-
-
-## BroadwellDe — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| BroadwellDe | Broadwell-DESystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-| BroadwellDe | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-| BroadwellDe | broadwell-deSystem | 10.1.2.8 | 07/01/2015 | 10.1.2.8 |
-
-
----
-
-## Cannon
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Cannon | Chipset_System | 10.0.27.0 | 04/22/2015 | 10.0.27 | 9DA6, 9DA8, 9DA9, 9DAA, 9DAB, 9DC5, 9DC6, 9DC7, 9DE8, 9DE9, 9DEA, 9DEB, 9DEE, 9DF7, 9DF9, A326, A328, A329, A32A, A32B, A347, A368, A369, A36A, A36B, A36E, A377 |
-
-
-## Cannon — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Cannon | Chipset_System | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-
-
----
-
-## CannonLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| CannonLake | CannonLake-HSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.16.8 | A300, A301, A302, A303, A304, A305, A306, A307, A308, A309, A30A, A30B, A30C, A30D, A30E, A30F, A310, A311, A312, A313, A314, A315, A316, A317, A318, A319, A31A, A31B, A31C, A31D, A31E, A31F, A320, A321, A323, A324, A32C, A32D, A32E, A32F, A330, A331, A332, A333, A334, A335, A336, A337, A338, A339, A33A, A33B, A33C, A33D, A33E, A33F, A340, A341, A342, A343 |
-| CannonLake | CannonLake-LPSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.15.7 | 9D80, 9D81, 9D82, 9D83, 9D84, 9D85, 9D86, 9D87, 9D88, 9D89, 9D8A, 9D8B, 9D8C, 9D8D, 9D8E, 9D8F, 9D90, 9D91, 9D92, 9D93, 9D94, 9D95, 9D96, 9D97, 9D98, 9D99, 9D9A, 9D9B, 9D9C, 9D9D, 9D9E, 9D9F, 9DA0, 9DA1, 9DA3, 9DA4, 9DB0, 9DB1, 9DB2, 9DB3, 9DB4, 9DB5, 9DB6, 9DB7, 9DB8, 9DB9, 9DBA, 9DBB, 9DBC, 9DBD, 9DBE, 9DBF |
-| CannonLake | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 | 9DA1, 9DA3, A321, A323 |
-
-
-## CannonLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| CannonLake | CannonLake-HSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.16.8 |
-| CannonLake | CannonLake-LPSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.15.7 |
-| CannonLake | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-
-
----
-
-## Cedarfork
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Cedarfork | CedarForkSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.21.10 | 18A0, 18A2, 18A4, 18A5, 18A6, 18A7, 18A8, 18A9, 18AA, 18AB, 18AC, 18AD, 18AE, 18AF, 18D3, 18D4, 18D6, 18D9, 18DC, 18DD, 18DE, 18DF, 18E0, 18E1, 18EC, 18EE |
-
-
-## Cedarfork — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Cedarfork | CedarForkSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.21.10 |
-
-
----
-
-## CoffeeLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| CoffeeLake | CoffeelakeSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.14.8 | 3E0F, 3E10, 3E18, 3E1F, 3e20, 3E30, 3e31, 3e32, 3e33, 3E34, 3E35, 3E81, 3E85, 3E89, 3EC2, 3EC4, 3EC6, 3ECA, 3ecc, 3ED0 |
-
-
-## CoffeeLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| CoffeeLake | CoffeelakeSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.14.8 |
-
-
----
-
-## Coletocreek
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Coletocreek | ColetoCreekSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 23B1, 23E0 |
-| Coletocreek | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 | 23B1, 23E0 |
-
-
-## Coletocreek — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Coletocreek | ColetoCreekSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-| Coletocreek | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-
-
----
-
-## CometLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| CometLake | CometLakePCH-HSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.31.2 | 0680, 0681, 0682, 0683, 0684, 0685, 0686, 0687, 0688, 0689, 068A, 068B, 068C, 068D, 068E, 068F, 0690, 0691, 0692, 0693, 0694, 0695, 0696, 0697, 0698, 0699, 069A, 069B, 069C, 069D, 069E, 069F, 06A0, 06A1, 06A3, 06A4, 06A6, 06AC, 06AD, 06AE, 06AF, 06B0, 06B1, 06B2, 06B3, 06B4, 06B5, 06B6, 06B7, 06B8, 06B9, 06BA, 06BB, 06BC, 06BD, 06BE, 06BF, 06C0, 06C1, 06C2, 06C3, 06EF |
-| CometLake | CometLakePCH-LPDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.27.4 | 0280, 0281, 0282, 0283, 0284, 0285, 0286, 0287, 0288, 0289, 028A, 028B, 028C, 028D, 028E, 028F, 0290, 0291, 0292, 0293, 0294, 0295, 0296, 0297, 0298, 0299, 029A, 029B, 029C, 029D, 029E, 029F, 02B0, 02B1, 02B2, 02B3, 02B4, 02B5, 02B6, 02B7, 02B8, 02B9, 02BA, 02BB, 02BC, 02BD, 02BE, 02BF |
-| CometLake | CometLakePCH-LPSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.27.4 | 0280, 0281, 0282, 0283, 0284, 0285, 0286, 0287, 0288, 0289, 028A, 028B, 028C, 028D, 028E, 028F, 0290, 0291, 0292, 0293, 0294, 0295, 0296, 0297, 0298, 0299, 029A, 029B, 029C, 029D, 029E, 029F, 02A0, 02A1, 02A3, 02A4, 02A8, 02A9, 02AA, 02AB, 02B0, 02B1, 02B2, 02B3, 02B4, 02B5, 02B6, 02B7, 02B8, 02B9, 02BA, 02BB, 02BC, 02BD, 02BE, 02BF, 02C5, 02C6, 02C7, 02E8, 02E9, 02EA, 02EB, 02EF, 02FB |
-| CometLake | CometLakePCH-VSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.33.5 | A390, A391, A392, A393, A394, A395, A396, A397, A398, A399, A39A, A39B, A39C, A39D, A39E, A39F, A3A0, A3A1, A3A3, A3A4, A3C0, A3C1, A3C2, A3C3, A3C4, A3C5, A3C6, A3C7, A3C8, A3C9, A3CA, A3CB, A3CC, A3CD, A3CE, A3CF, A3D0, A3D1, A3D2, A3D3, A3D4, A3D5, A3D6, A3D7, A3D8, A3D9, A3DA, A3DB, A3DC, A3DD, A3DE, A3DF, A3E7, A3E8, A3E9, A3EA, A3EB, A3EC, A3ED, A3EE, A3F0 |
-| CometLake | CometLakeSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.30.4 | 9B33, 9B43, 9B44, 9B51, 9B53, 9B54, 9B61, 9B63, 9B64, 9B71 |
-
-
-## CometLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| CometLake | CometLakePCH-HSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.31.2 |
-| CometLake | CometLakePCH-LPDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.27.4 |
-| CometLake | CometLakePCH-LPSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.27.4 |
-| CometLake | CometLakePCH-VSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.33.5 |
-| CometLake | CometLakeSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.30.4 |
-
-
----
-
-## Cougarpoint
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Cougarpoint | CougarPointSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 1C10, 1C12, 1C14, 1C16, 1C18, 1C1A, 1C1C, 1C1E, 1C22, 1C24, 1C25, 1C40, 1C41, 1C42, 1C43, 1C44, 1C46, 1C47, 1C49, 1C4A, 1C4B, 1C4C, 1C4D, 1C4E, 1C4F, 1C50, 1C52, 1C54, 1C56, 1C58, 1C59, 1C5A, 1C5C |
-
-
-## Cougarpoint — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Cougarpoint | CougarPointSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## Crystalwell
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Crystalwell | CrystalwellSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 0d00, 0d01, 0d05, 0d09 |
-
-
-## Crystalwell — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Crystalwell | CrystalwellSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## Denverton
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Denverton | DenvertonSystem | 10.1.2.80 | 08/19/2016 | 10.1.2.80 | 1980, 1981, 1982, 1983, 1984, 1985, 1986, 1987, 1988, 1989, 198A, 198B, 198C, 198D, 198E, 198F, 1990, 1991, 1992, 1993, 1994, 1995, 1996, 1997, 1998, 1999, 199A, 199B, 199C, 199D, 199E, 199F, 19A2, 19A4, 19A5, 19A6, 19A7, 19A8, 19A9, 19AA, 19AB, 19AC, 19D1, 19D2, 19D3, 19D4, 19D6, 19DC, 19DE, 19DF, 19E0, 19E1, 19E2 |
-
-
-## Denverton — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Denverton | DenvertonSystem | 10.1.2.80 | 08/19/2016 | 10.1.2.80 |
-
-
----
-
-## ElkhartLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| ElkhartLake | ElkhartLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.25.6 | 4B00, 4B01, 4B20, 4B21, 4B23, 4B24, 4B38, 4B39, 4B3A, 4B3B, 4B3C, 4B3D, 4B3E, 4B4A, 4B7F |
-
-
-## ElkhartLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| ElkhartLake | ElkhartLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.25.6 |
-
-
----
-
-## Emmitsburg
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Emmitsburg | EmmitsburgSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.40.6 | 1B80, 1BB0, 1BB1, 1BB2, 1BB3, 1BB4, 1BB5, 1BB8, 1BB9, 1BBA, 1BBB, 1BBC, 1BBD, 1BBE, 1BBF, 1BC6, 1BC7, 1BC9, 1BCA, 1BCC, 1BCE, 1BE6, 1BFF |
-
-
-## Emmitsburg — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Emmitsburg | EmmitsburgSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.40.6 |
-
-
----
-
-## Geminilake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Geminilake | GeminilakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.13.4 | 3192, 31D4, 31D6, 31D7, 31D8, 31D9, 31DA, 31DB, 31E8, 31F0 |
-
-
-## Geminilake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Geminilake | GeminilakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.13.4 |
-
-
----
-
-## GraniteRapids
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| GraniteRapids | GraniteRapidsSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.52.12 | 2714, 3256, 5794, 5796, 57C2 |
-
-
-## GraniteRapids — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| GraniteRapids | GraniteRapidsSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.52.12 |
-
-
----
-
-## Haswell
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Haswell | HaswellSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 0C00, 0C01, 0C04, 0C05, 0C08, 0C09 |
-
-
-## Haswell — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Haswell | HaswellSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## HaswellE
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| HaswellE | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 | 2F10, 2F11, 2F12, 2F13, 2F14, 2F15, 2F16, 2F17, 2F18, 2F19, 2F1A, 2F1B, 2F1C, 2F1D, 2F1E, 2F1F, 2F20, 2F21, 2F22, 2F23, 2F24, 2F25, 2F26, 2F27, 2F28, 2F29, 2F2A, 2F2C, 2F30, 2F32, 2F33, 2F34, 2F36, 2F37, 2F38, 2F39, 2F3A, 2F3E, 2F3F, 2F40, 2F41, 2F43, 2F45, 2F46, 2F47, 2F60, 2F68, 2F6A, 2F6B, 2F6C, 2F6D, 2F6E, 2F6F, 2F70, 2F71, 2F76, 2F78, 2F79, 2F7D, 2F7E, 2F80, 2F81, 2F83, 2F85, 2F86, 2F87, 2F88, 2F8A, 2F90, 2F93, 2F95, 2F96, 2F98, 2F99, 2F9A, 2FA0, 2FA8, 2FAA, 2FAB, 2FAC, 2FAD, 2FAE, 2FAF, 2FB0, 2FB1, 2FB2, 2FB3, 2FB4, 2FB5, 2FB6, 2FB7, 2FB8, 2FB9, 2FBA, 2FBB, 2FBC, 2FBD, 2FBE, 2FBF, 2FC0, 2FD0, 2FD1, 2FD2, 2FD3, 2FD4, 2FD5, 2FD6, 2FD7, 2FE0, 2FE1, 2FE2, 2FE3, 2FE4, 2FE5, 2FE6, 2FE7, 2FE8, 2FE9, 2FEA, 2FEB, 2FEC, 2FED, 2FEE, 2FEF, 2FF0, 2FF1, 2FF2, 2FF3, 2FF4, 2FF5, 2FF6, 2FF7, 2FF8, 2FF9, 2FFA, 2FFB, 2FFC, 2FFD, 2FFE |
-| HaswellE | HaswellESystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 2F00, 2F01, 2F02, 2F03, 2F04, 2F05, 2F06, 2F07, 2F08, 2F09, 2F0A, 2F0B, 2F10, 2F11, 2F12, 2F13, 2F14, 2F15, 2F16, 2F17, 2F18, 2F19, 2F1A, 2F1B, 2F1C, 2F1D, 2F1E, 2F1F, 2F20, 2F21, 2F22, 2F23, 2F24, 2F25, 2F26, 2F27, 2F28, 2F29, 2F2A, 2F2C, 2F2E, 2F2F, 2F30, 2F32, 2F33, 2F34, 2F36, 2F37, 2F38, 2F39, 2F3A, 2F3E, 2F3F, 2F40, 2F41, 2F43, 2F45, 2F46, 2F47, 2F60, 2F68, 2F6A, 2F6B, 2F6C, 2F6D, 2F6E, 2F6F, 2F70, 2F71, 2F76, 2F78, 2F79, 2F7D, 2F7E, 2F80, 2F81, 2F83, 2F85, 2F86, 2F87, 2F88, 2F8A, 2F90, 2F93, 2F95, 2F96, 2F98, 2F99, 2F9A, 2FA0, 2FA8, 2FAA, 2FAB, 2FAC, 2FAD, 2FAE, 2FAF, 2FB0, 2FB1, 2FB2, 2FB3, 2FB4, 2FB5, 2FB6, 2FB7, 2FB8, 2FB9, 2FBA, 2FBB, 2FBC, 2FBD, 2FBE, 2FBF, 2FC0, 2FC1, 2FC2, 2FC3, 2FC4, 2FC5, 2FD0, 2FD1, 2FD2, 2FD3, 2FD4, 2FD5, 2FD6, 2FD7, 2FE0, 2FE1, 2FE2, 2FE3, 2FE4, 2FE5, 2FE6, 2FE7, 2FE8, 2FE9, 2FEA, 2FEB, 2FEC, 2FED, 2FEE, 2FEF, 2FF0, 2FF1, 2FF2, 2FF3, 2FF4, 2FF5, 2FF6, 2FF7, 2FF8, 2FF9, 2FFA, 2FFB, 2FFC, 2FFD, 2FFE |
-
-
-## HaswellE — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| HaswellE | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-| HaswellE | HaswellESystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## IceLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| IceLake | IceLakePCH-LPSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.12.3 | 3480, 3481, 3482, 3483, 3484, 3485, 3486, 3487, 3488, 3489, 348A, 348B, 348C, 348D, 348E, 348F, 3490, 3491, 3492, 3493, 3494, 3495, 3496, 3497, 3498, 3499, 349A, 349B, 349C, 349D, 349E, 349F, 34A0, 34A1, 34A3, 34A4, 34B0, 34B1, 34B2, 34B3, 34B4, 34B5, 34B6, 34B7, 34B8, 34B9, 34BA, 34BB, 34BC, 34BD, 34BE, 34BF |
-| IceLake | IceLakePCH-NSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.22.4 | 3880, 3881, 3882, 3883, 3884, 3885, 3886, 3887, 3888, 3889, 388A, 388B, 388C, 388D, 388E, 388F, 3890, 3891, 3892, 3893, 3894, 3895, 3896, 3897, 3898, 3899, 389A, 389B, 389C, 389D, 389E, 389F, 38A0, 38A1, 38A3, 38A4, 38A6, 38B8, 38B9, 38BA, 38BB, 38BC, 38BD, 38BE, 38BF |
-| IceLake | IceLakeSystemThermal | 10.1.20266.8668 | 02/21/2025* | 10.1.20.5 | 8A03 |
-| IceLake | IceLakeXSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.26.11 | 0B00, 3349, 3440, 3441, 3442, 3443, 3445, 3446, 3447, 3448, 344a, 344b, 344c, 344d, 3450, 3451, 3452, 3455, 3458, 3459, 345a, 345b, 345c, 345d, 345e, 345F |
-
-
-## IceLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| IceLake | IceLakePCH-LPSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.12.3 |
-| IceLake | IceLakePCH-NSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.22.4 |
-| IceLake | IceLakeSystemThermal | 10.1.20266.8668 | 02/21/2025* | 10.1.20.5 |
-| IceLake | IceLakeXSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.26.11 |
-
-
----
-
-## IvyTown
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| IvyTown | Chipset_System | 10.0.27.0 | 04/22/2015 | 10.0.27 | 0E10, 0E13, 0E17, 0E18, 0E1C, 0E1D, 0E1E, 0E1F, 0E20, 0E21, 0E22, 0E23, 0E24, 0E25, 0E26, 0E27, 0E28, 0E29, 0E2A, 0E2C, 0E30, 0E32, 0E33, 0E34, 0E36, 0E37, 0E38, 0E3A, 0E40, 0E45, 0E47, 0E60, 0E68, 0E6A, 0E6B, 0E6C, 0E6D, 0E71, 0E79, 0E7D, 0E80, 0E81, 0E85, 0E87, 0E90, 0E95, 0EA0, 0EA8, 0EAA, 0EAB, 0EAC, 0EAD, 0EB0, 0EB1, 0EB2, 0EB3, 0EB4, 0EB5, 0EB6, 0EB7, 0EC0, 0EC1, 0EC2, 0EC3, 0EC4, 0EC8, 0EC9, 0ECA, 0ED8, 0ED9, 0EDC, 0EDD, 0EDE, 0EDF, 0EE0, 0EE1, 0EE2, 0EE3, 0EE4, 0EE5, 0EE6, 0EE7, 0EE8, 0EE9, 0EEA, 0EEB, 0EEC, 0EED, 0EEE, 0EF0, 0EF1, 0EF2, 0EF3, 0EF4, 0EF5, 0EF6, 0EF7, 0EF8, 0EF9, 0EFA, 0EFB, 0EFC, 0EFD, 1D68 |
-| IvyTown | Chipset_System* | 10.0.26.0 | 02/26/2015 | 10.0.26 | 0E10, 0E13, 0E17, 0E18, 0E1C, 0E1D, 0E1E, 0E1F, 0E20, 0E21, 0E22, 0E23, 0E24, 0E25, 0E26, 0E27, 0E28, 0E29, 0E2A, 0E2C, 0E30, 0E32, 0E33, 0E34, 0E36, 0E37, 0E38, 0E3A, 0E40, 0E45, 0E47, 0E60, 0E68, 0E6A, 0E6B, 0E6C, 0E6D, 0E71, 0E79, 0E7D, 0E80, 0E81, 0E85, 0E87, 0E90, 0E95, 0EA0, 0EA8, 0EAA, 0EAB, 0EAC, 0EAD, 0EB0, 0EB1, 0EB2, 0EB3, 0EB4, 0EB5, 0EB6, 0EB7, 0EC0, 0EC1, 0EC2, 0EC3, 0EC4, 0EC8, 0EC9, 0ECA, 0ED8, 0ED9, 0EDC, 0EDD, 0EDE, 0EDF, 0EE0, 0EE1, 0EE2, 0EE3, 0EE4, 0EE5, 0EE6, 0EE7, 0EE8, 0EE9, 0EEA, 0EEB, 0EEC, 0EED, 0EEE, 0EF0, 0EF1, 0EF2, 0EF3, 0EF4, 0EF5, 0EF6, 0EF7, 0EF8, 0EF9, 0EFA, 0EFB, 0EFC, 0EFD, 1D68 |
-| IvyTown | IvyTownSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 0E00, 0E01, 0E02, 0E03, 0E04, 0E05, 0E06, 0E07, 0E08, 0E09, 0E0A, 0E0B, 0E10, 0E13, 0E17, 0E18, 0E1C, 0E1D, 0E1E, 0E1F, 0E20, 0E21, 0E22, 0E23, 0E24, 0E25, 0E26, 0E27, 0E28, 0E29, 0E2A, 0E2C, 0E2E, 0E2F, 0E30, 0E32, 0E33, 0E34, 0E36, 0E37, 0E38, 0E3A, 0E3E, 0E3F, 0E40, 0E41, 0E43, 0E44, 0E45, 0E47, 0E60, 0E68, 0E6A, 0E6B, 0E6C, 0E6D, 0E71, 0E74, 0E75, 0E77, 0E79, 0E7D, 0E7F, 0E80, 0E81, 0E83, 0E84, 0E85, 0E87, 0E90, 0E93, 0E94, 0E95, 0EA0, 0EA8, 0EAA, 0EAB, 0EAC, 0EAD, 0EAE, 0EAF, 0EB0, 0EB1, 0EB2, 0EB3, 0EB4, 0EB5, 0EB6, 0EB7, 0EBC, 0EBE, 0EBF, 0EC0, 0EC1, 0EC2, 0EC3, 0EC4, 0EC8, 0EC9, 0ECA, 0ED8, 0ED9, 0EDC, 0EDD, 0EDE, 0EDF, 0EE0, 0EE1, 0EE2, 0EE3, 0EE4, 0EE5, 0EE6, 0EE7, 0EE8, 0EE9, 0EEA, 0EEB, 0EEC, 0EED, 0EEE, 0EF0, 0EF1, 0EF2, 0EF3, 0EF4, 0EF5, 0EF6, 0EF7, 0EF8, 0EF9, 0EFA, 0EFB, 0EFC, 0EFD |
-
-
-## IvyTown — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| IvyTown | Chipset_System | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-| IvyTown | Chipset_System* | 10.0.26.0 | 02/26/2015 | 10.0.26 |
-| IvyTown | IvyTownSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## Ivybridge
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Ivybridge | IvyBridgeSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 0150, 0151, 0154, 0155, 0158, 0159, 015C, 015D |
-
-
-## Ivybridge — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Ivybridge | IvyBridgeSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## Jaketown
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Jaketown | JaketownSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 3C00, 3C01, 3C02, 3C03, 3C04, 3C05, 3C06, 3C07, 3C08, 3C09, 3C0A, 3C0B, 3C0D, 3C0E, 3C0F, 3C20, 3C21, 3C22, 3C23, 3C24, 3C25, 3C26, 3C27, 3C28, 3C2A, 3C2C, 3C2E, 3C2F, 3C40, 3C41, 3C42, 3C43, 3C44, 3C45, 3C46, 3C71, 3C80, 3C83, 3C84, 3C86, 3C90, 3C93, 3C94, 3C96, 3CA0, 3CA8, 3CAA, 3CAB, 3CAC, 3CAD, 3CAE, 3CB0, 3CB1, 3CB2, 3CB3, 3CB4, 3CB5, 3CB6, 3CB7, 3CB8, 3CC0, 3CC1, 3CC2, 3CD0, 3CE0, 3CE3, 3CE4, 3CE6, 3CE8, 3CE9, 3CEA, 3CEB, 3CEC, 3CED, 3CEE, 3CEF, 3CF4, 3CF5, 3CF6 |
-
-
-## Jaketown — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Jaketown | JaketownSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## JasperLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| JasperLake | JasperLakePCH-NSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.32.3 | 4D80, 4D81, 4D82, 4D83, 4D84, 4D85, 4D86, 4D87, 4D88, 4D89, 4D8A, 4D8B, 4D8C, 4D8D, 4D8E, 4D8F, 4D90, 4D91, 4D92, 4D93, 4D94, 4D95, 4D96, 4D97, 4D98, 4D99, 4D9A, 4D9B, 4D9C, 4D9D, 4D9E, 4D9F, 4DA0, 4DA1, 4DA3, 4DA4, 4DB8, 4DB9, 4DBA, 4DBB, 4DBC, 4DBD, 4DBE, 4DBF, 4DEF |
-| JasperLake | JasperLake+System | 10.1.20266.8668 | 02/21/2025* | 10.1.29.4 | 4E00, 4E03, 4E10, 4E12, 4E14, 4E19, 4E20, 4E22, 4E24, 4E26, 4E28, 4E30, 4E40, 4E41, 4E50, 4E51, 4E60, 4E70, 4E71 |
-
-
-## JasperLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| JasperLake | JasperLakePCH-NSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.32.3 |
-| JasperLake | JasperLake+System | 10.1.20266.8668 | 02/21/2025* | 10.1.29.4 |
-
-
----
-
-## KabyLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| KabyLake | Chipset_System | 10.0.27.0 | 04/22/2015 | 10.0.27 | A2A1, A2A3, A2A6, A2A8, A2A9, A2AA, A2AB, A2C7, A2E8, A2E9, A2EA, A2EB, A2EE, A2F7, A2F9 |
-| KabyLake | KabyLake-HSystem | 10.1.1.37 | 09/30/2016 | 10.1.1.36 | A290, A291, A292, A293, A294, A295, A296, A297, A298, A299, A29A, A29B, A29C, A29D, A29E, A29F, A2A1, A2A3, A2B0, A2C0, A2C1, A2C2, A2C3, A2C4, A2C5, A2C6, A2C7, A2C8, A2C9, A2CA, A2CB, A2CC, A2CD, A2CE, A2CF, A2D2, A2D3, A2D7, A2D8, A2D9, A2DA, A2DB, A2DC, A2DD, A2DE |
-| KabyLake | KabyLakePCH-HSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.11.5 | A290, A291, A292, A293, A294, A295, A296, A297, A298, A299, A29A, A29B, A29C, A29D, A29E, A29F, A2A0, A2A1, A2A3, A2C0, A2C1, A2C2, A2C3, A2C4, A2C5, A2C6, A2C7, A2C8, A2C9, A2CA, A2CB, A2CC, A2CD, A2CE, A2CF, A2D0, A2D1, A2D2, A2D3, A2D4, A2D5, A2D6, A2D7, A2D8, A2D9, A2DA, A2DB, A2DC, A2DD, A2DE, A2DF, A2E7, A2E8, A2E9, A2EA, A2EB, A2EC, A2ED, A2EE |
-| KabyLake | KabylakeSystem | 10.1.2.80 | 08/19/2016 | 10.1.2.80 | 5900, 5901, 5904, 5905, 5909, 590C, 590F, 5910, 5918, 591F |
-
-
-## KabyLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| KabyLake | Chipset_System | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-| KabyLake | KabyLake-HSystem | 10.1.1.37 | 09/30/2016 | 10.1.1.36 |
-| KabyLake | KabyLakePCH-HSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.11.5 |
-| KabyLake | KabylakeSystem | 10.1.2.80 | 08/19/2016 | 10.1.2.80 |
-
-
----
-
-## Kaseyville
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Kaseyville | KaseyvilleSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.53.11 | 11FB |
-
-
-## Kaseyville — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Kaseyville | KaseyvilleSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.53.11 |
-
-
----
-
-## Knightslanding
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Knightslanding | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 | 7801, 7808, 7809, 780A, 780B, 780C, 780D, 7810, 7812, 7813, 7814 |
-| Knightslanding | KnightsLandingSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 7801, 7808, 7809, 780A, 780B, 780C, 780D, 7810, 7812, 7813, 7814, 7816, 7817, 781A, 781B, 781C, 781F, 7820, 7821, 7822, 7823, 7824, 7825, 7826, 782A, 782B, 782C, 782D, 782E, 782F, 7830, 7831, 7832, 7833, 7834, 7835, 7836, 7837, 7838, 7839, 7840, 7841, 7842, 7843, 7844, 7845, 7846, 7847, 7848, 7849 |
-
-
-## Knightslanding — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Knightslanding | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-| Knightslanding | KnightsLandingSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## Lakefield
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Lakefield | LakeFieldSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.28.2 | 9880, 9881, 9882, 9883, 9884, 9885, 9886, 9887, 9888, 9889, 988A, 988B, 988C, 988D, 988E, 988F, 9890, 9891, 9892, 9893, 9894, 9895, 9896, 9897, 9898, 9899, 989A, 989B, 989C, 989D, 989E, 989F, 98A0, 98A1, 98A4, 98B8, 98B9, 98BA, 98BB, 98BC, 98EF |
-
-
-## Lakefield — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Lakefield | LakeFieldSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.28.2 |
-
-
----
-
-## Lewisburg
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Lewisburg | Chipset_System | 10.0.27.0 | 04/22/2015 | 10.0.27 | A1A4 |
-| Lewisburg | LewisburgSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.9.6 | 37C8, A190, A191, A192, A193, A194, A195, A196, A197, A198, A199, A19A, A19B, A19C, A19D, A19E, A19F, A1A1, A1A3, A1A4, A1B1, A1BA, A1BB, A1BC, A1BD, A1BE, A1C0, A1C1, A1C2, A1C3, A1C4, A1C5, A1C6, A1C7, A1E7, A1E8, A1E9, A1EA, A1EC, A1ED, A1F8, A1F9, A1FC, A210, A211, A212, A213, A214, A215, A216, A217, A218, A219, A21A, A21B, A21C, A21D, A21E, A21F, A221, A223, A224, A231, A23A, A23B, A23C, A23D, A23E, A240, A241, A242, A243, A244, A245, A246, A247, A267, A268, A269, A26A, A26C, A26D, A278, A279, A27C |
-
-
-## Lewisburg — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Lewisburg | Chipset_System | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-| Lewisburg | LewisburgSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.9.6 |
-
-
----
-
-## LunarLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| LunarLake | LunarLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.48.18 | A822, A823, A848, A862, A863, A871 |
-
-
-## LunarLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| LunarLake | LunarLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.48.18 |
-
-
----
-
-## LynxPoint
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| LynxPoint | lynxpointlpSystem | 10.1.1.8 | 06/26/2015 | 10.1.1.8 | 9C10, 9C11, 9C12, 9C13, 9C14, 9C15, 9C16, 9C17, 9C18, 9C19, 9C1A, 9C1B, 9C1C, 9C1D, 9C1E, 9C1F, 9C22, 9C23, 9C40, 9C41, 9C42, 9C43, 9C44, 9C45, 9C46, 9C47, 9C48, 9C49, 9C4A, 9C4B, 9C4C, 9C4D, 9C4E, 9C4F, 9C50, 9C51, 9C52, 9C53, 9C54, 9C55, 9C56, 9C57, 9C58, 9C59, 9C5A, 9C5B, 9C5C, 9C5D, 9C5E, 9C5F |
-| LynxPoint | Lynxpoint-HRefreshSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 8C90, 8C92, 8C94, 8C96, 8C98, 8C9A, 8C9C, 8C9E, 8CA2, 8CA4, 8CC1, 8CC2, 8CC3, 8CC4, 8CC5, 8CC6 |
-| LynxPoint | LynxPointLPSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 9C10, 9C11, 9C12, 9C13, 9C14, 9C15, 9C16, 9C17, 9C18, 9C19, 9C1A, 9C1B, 9C1C, 9C1D, 9C1E, 9C1F, 9C22, 9C23, 9C24, 9C40, 9C41, 9C42, 9C43, 9C44, 9C45, 9C46, 9C47, 9C48, 9C49, 9C4A, 9C4B, 9C4C, 9C4D, 9C4E, 9C4F, 9C50, 9C51, 9C52, 9C53, 9C54, 9C55, 9C56, 9C57, 9C58, 9C59, 9C5A, 9C5B, 9C5C, 9C5D, 9C5E, 9C5F |
-| LynxPoint | LynxPointSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 8C10, 8C11, 8C12, 8C13, 8C14, 8C15, 8C16, 8C17, 8C18, 8C19, 8C1A, 8C1B, 8C1C, 8C1D, 8C1E, 8C1F, 8C22, 8C23, 8C24, 8C40, 8C41, 8C42, 8C44, 8C46, 8C49, 8C4A, 8C4B, 8C4C, 8C4E, 8C4F, 8C50, 8C52, 8C54, 8C56, 8C58, 8C5C |
-
-
-## LynxPoint — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| LynxPoint | lynxpointlpSystem | 10.1.1.8 | 06/26/2015 | 10.1.1.8 |
-| LynxPoint | Lynxpoint-HRefreshSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-| LynxPoint | LynxPointLPSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-| LynxPoint | LynxPointSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## MeteorLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| MeteorLake | MeteorLakePCH-HSystem | 10.1.19913.8607 | 03/04/2024* | 10.1.55.3 | 7E48, 7E49 |
-| MeteorLake | MeteorLakePCH-SSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.51.8 | 7F20, 7F21, 7F23, 7F24, 7F2F, 7F58, 7F59, 7F69 |
-| MeteorLake | MeteorLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.47.12 | 7E22, 7E23, 7E71, 7E7F, AE22, AE23 |
-
-
-## MeteorLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| MeteorLake | MeteorLakePCH-HSystem | 10.1.19913.8607 | 03/04/2024* | 10.1.55.3 |
-| MeteorLake | MeteorLakePCH-SSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.51.8 |
-| MeteorLake | MeteorLakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.47.12 |
-
-
----
-
-## Pantherlake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Pantherlake | PantherLakeSystem | 10.1.20256.8665 | 02/21/2025* | 10.1.56.21 | E300, E300, E301, E301, E302, E302, E303, E303, E304, E304, E305, E305, E306, E306, E307, E307, E308, E308, E309, E309, E30A, E30A, E30B, E30B, E30C, E30C, E30D, E30D, E30E, E30E, E30F, E30F, E310, E310, E311, E311, E312, E312, E313, E313, E314, E314, E315, E315, E316, E316, E317, E317, E318, E318, E319, E319, E31A, E31A, E31B, E31B, E31C, E31C, E31D, E31D, E31E, E31E, E31F, E31F, E322, E322, E323, E323, E348, E348, E362, E362, E363, E363, E37F, E37F, E400, E400, E401, E401, E402, E402, E403, E403, E404, E404, E405, E405, E406, E406, E407, E407, E408, E408, E409, E409, E40A, E40A, E40B, E40B, E40C, E40C, E40D, E40D, E40E, E40E, E40F, E40F, E410, E410, E411, E411, E412, E412, E413, E413, E414, E414, E415, E415, E416, E416, E417, E417, E418, E418, E419, E419, E41A, E41A, E41B, E41B, E41C, E41C, E41D, E41D, E41E, E41E, E41F, E41F, E422, E422, E423, E423, E448, E448, E44A, E44A, E462, E462, E463, E463, E471, E471 |
-
-
-## Pantherlake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Pantherlake | PantherLakeSystem | 10.1.20256.8665 | 02/21/2025* | 10.1.56.21 |
-
-
----
-
-## Pantherpoint
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Pantherpoint | PantherPointSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 1E10, 1E12, 1E14, 1E16, 1E18, 1E1A, 1E1C, 1E1E, 1E22, 1E24, 1E25, 1E31, 1E41, 1E42, 1E43, 1E44, 1E46, 1E47, 1E48, 1E49, 1E4A, 1E53, 1E55, 1E56, 1E57, 1E58, 1E59, 1E5B, 1E5D, 1E5E, 1E5F |
-
-
-## Pantherpoint — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Pantherpoint | PantherPointSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## Patsburg
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Patsburg | PatsburgSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 1D10, 1D11, 1D12, 1D13, 1D14, 1D15, 1D16, 1D17, 1D18, 1D19, 1D1A, 1D1B, 1D1C, 1D1D, 1D1E, 1D1F, 1D22, 1D24, 1D25, 1D3E, 1D3F, 1D40, 1D41, 1D70, 1D71, 1D72, 1D73, 1D74, 1D76, 1D77 |
-
-
-## Patsburg — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Patsburg | PatsburgSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## RaptorLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| RaptorLake | RaptorLakePCH-SSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.46.5 | 7A00, 7A01, 7A02, 7A03, 7A04, 7A05, 7A06, 7A07, 7A08, 7A09, 7A0A, 7A0B, 7A0C, 7A0D, 7A0E, 7A0F, 7A10, 7A11, 7A12, 7A13, 7A14, 7A15, 7A16, 7A17, 7A18, 7A19, 7A1A, 7A1B, 7A1C, 7A1D, 7A1E, 7A1F, 7A20, 7A21, 7A23, 7A24, 7A26, 7A27, 7A2F, 7A30, 7A31, 7A32, 7A33, 7A34, 7A35, 7A36, 7A37, 7A38, 7A39, 7A3A, 7A3B, 7A3C, 7A3D, 7A3E, 7A3F, 7A40, 7A41, 7A42, 7A43, 7A44, 7A45, 7A46, 7A47, 7A48, 7A49, 7A4A, 7A4B |
-| RaptorLake | RaptorLakeSystem | 10.1.19867.8574 | 03/04/2024* | 10.1.49.9 | A70D, A72D, A74D |
-
-
-## RaptorLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| RaptorLake | RaptorLakePCH-SSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.46.5 |
-| RaptorLake | RaptorLakeSystem | 10.1.19867.8574 | 03/04/2024* | 10.1.49.9 |
-
-
----
-
-## RocketLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| RocketLake | RocketLakeSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.41.5 | 4C01, 4C03, 4C05, 4C07, 4C09, 4C11, 4C19, 4C23, 4C33, 4C43, 4C53, 4C63 |
-
-
-## RocketLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| RocketLake | RocketLakeSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.41.5 |
-
-
----
-
-## Sandybridge
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Sandybridge | SandyBridgeSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 0100, 0101, 0104, 0105, 0108, 0109, 010D |
-
-
-## Sandybridge — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Sandybridge | SandyBridgeSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## SapphireRapids
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| SapphireRapids | SapphireRapidsSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.39.10 | 0998, 0B23, 0B25, 0CFE, 2710, 3240, 3241, 3242, 3245, 3246, 3247, 324A, 324C, 324D, 3250, 3251, 3252, 3255, 3258, 3259, 325A, 325B, 325C, 325D, 325E, 325F |
-
-
-## SapphireRapids — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| SapphireRapids | SapphireRapidsSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.39.10 |
-
-
----
-
-## Server_common
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Server_common | IceLakeXSystem | 10.1.19485.8386 | 03/14/2023* | 10.1.26.10 | 347a, 347b, 347c, 347d, 347E |
-| Server_common | Server_CommonSystem | 10.1.18698.8258 | 09/23/2020* | 10.1.42.7 | 0000, 09A2, 09A3, 09A4, 09a6, 09A7, 2880, 344F, 3457 |
-
-
-## Server_common — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Server_common | IceLakeXSystem | 10.1.19485.8386 | 03/14/2023* | 10.1.26.10 |
-| Server_common | Server_CommonSystem | 10.1.18698.8258 | 09/23/2020* | 10.1.42.7 |
-
-
----
-
-## Skylake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Skylake | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 | 1911, 2014, 2015, 2016, 2020, 2021, 2024 |
-| Skylake | Skylake-ESystem | 10.1.20314.8688S | 02/21/2025* | 10.1.8.8 | 2014, 2015, 2016, 2018, 201A, 201C, 2020, 2021, 2024, 2025, 2026, 2030, 2031, 2032, 2033, 2034, 2035, 2036, 203A, 203D, 2040, 2041, 2042, 2043, 2044, 2045, 2046, 2047, 2048, 2049, 204A, 204B, 204C, 204D, 204E, 2054, 2055, 2056, 2057, 2058, 2059, 205A, 205B, 2066, 2068, 2069, 206A, 206B, 206C, 206D, 206E, 206F, 2078, 207A, 2080, 2081, 2082, 2083, 2084, 2085, 2086, 2088, 208D, 208E |
-| Skylake | SkylakeSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.7.4 | 1900, 1901, 1905, 1909, 190F, 1910, 191F |
-
-
-## Skylake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Skylake | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-| Skylake | Skylake-ESystem | 10.1.20314.8688S | 02/21/2025* | 10.1.8.8 |
-| Skylake | SkylakeSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.7.4 |
-
-
----
-
-## SunrisePoint
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| SunrisePoint | sunrisepoint-hSystem | 10.1.2.10 | 08/07/2015 | 10.1.2.10 | A110, A111, A112, A113, A114, A115, A116, A117, A118, A119, A11A, A11B, A11C, A11D, A11E, A11F, A120, A121, A123, A124, A126, A127, A128, A129, A12A, A130, A131, A135, A140, A141, A142, A143, A144, A145, A146, A147, A148, A149, A14A, A14B, A14C, A14D, A14E, A14F, A150, A151, A152, A153, A154, A155, A156, A157, A158, A159, A15A, A15B, A15C, A15D, A15E, A15F, A160, A161, A162, A163, A166, A167, A168, A169, A16A |
-| SunrisePoint | SunrisePoint-LPSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.5.3 | 9D10, 9D11, 9D12, 9D13, 9D14, 9D15, 9D16, 9D17, 9D18, 9D19, 9D1A, 9D1B, 9D21, 9D23, 9D24, 9D41, 9D43, 9D46, 9D48, 9D4B, 9D4E, 9D50, 9D51, 9D53, 9D56, 9D58 |
-| SunrisePoint | sunrisepoint-lpSystem | 10.1.1.13 | 10/28/2015 | 10.1.1.13 | 9D10, 9D11, 9D12, 9D13, 9D14, 9D15, 9D16, 9D17, 9D18, 9D19, 9D1A, 9D1B, 9D21, 9D23, 9D24, 9D26, 9D27, 9D28, 9D29, 9D2A, 9D30, 9D31, 9D35, 9D41, 9D43, 9D46, 9D48, 9D60, 9D61, 9D62, 9D63, 9D64, 9D65, 9D66 |
-| SunrisePoint | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 | 9D21, 9D24, 9D26, 9D30, 9D31, 9D35, A120, A121, A124, A126, A130 |
-| SunrisePoint | SunrisePoint-HSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.6.3 | A110, A111, A112, A113, A114, A115, A116, A117, A118, A119, A11A, A11B, A11C, A11D, A11E, A11F, A120, A121, A123, A124, A126, A141, A142, A143, A144, A145, A146, A147, A148, A149, A14A, A14B, A14C, A14D, A14E, A150, A151, A152, A153, A154, A155, A167, A168, A169, A16A |
-
-
-## SunrisePoint — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| SunrisePoint | sunrisepoint-hSystem | 10.1.2.10 | 08/07/2015 | 10.1.2.10 |
-| SunrisePoint | SunrisePoint-LPSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.5.3 |
-| SunrisePoint | sunrisepoint-lpSystem | 10.1.1.13 | 10/28/2015 | 10.1.1.13 |
-| SunrisePoint | Chipset_System* | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-| SunrisePoint | SunrisePoint-HSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.6.3 |
-
-
----
-
-## TigerLake
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| TigerLake | TigerLakePCH-HDmaSecExtension | 10.1.20314.8688S | 02/21/2025* | 10.1.34.13 | 4380, 4381, 4382, 4383, 4384, 4385, 4386, 4387, 4388, 4389, 438A, 438B, 438C, 438D, 438E, 438F, 4390, 4391, 4392, 4393, 4394, 4395, 4396, 4397, 4398, 4399, 439A, 439B, 439C, 439D, 439E, 439F, 43B0, 43B1, 43B2, 43B3, 43B4, 43B5, 43B6, 43B7, 43B8, 43B9, 43BA, 43BB, 43BC, 43BD, 43BE, 43BF, 43C0, 43C1, 43C2, 43C3, 43C4, 43C5, 43C6, 43C7 |
-| TigerLake | TigerLakePCH-HSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.34.13 | 4380, 4381, 4382, 4383, 4384, 4385, 4386, 4387, 4388, 4389, 438A, 438B, 438C, 438D, 438E, 438F, 4390, 4391, 4392, 4393, 4394, 4395, 4396, 4397, 4398, 4399, 439A, 439B, 439C, 439D, 439E, 439F, 43A0, 43A1, 43A2, 43A3, 43A4, 43AF, 43B0, 43B1, 43B2, 43B3, 43B4, 43B5, 43B6, 43B7, 43B8, 43B9, 43BA, 43BB, 43BC, 43BD, 43BE, 43BF, 43C0, 43C1, 43C2, 43C3, 43C4, 43C5, 43C6, 43C7, 43EF |
-| TigerLake | TigerlakeDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.43.5 | 9A01, 9A0F, 9a23, 9a25, 9a27, 9a29, 9a2B, 9a2D, 9a2f, 9a31, 9a37, 9a3B, 9a3D, 9a3F |
-| TigerLake | TigerlakePCH-LPDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.24.6 | A080, A081, A082, A083, A084, A085, A086, A087, A088, A089, A08A, A08B, A08C, A08D, A08E, A08F, A090, A091, A092, A093, A094, A095, A096, A097, A098, A099, A09A, A09B, A09C, A09D, A09E, A09F, A0B0, A0B1, A0B2, A0B3, A0B4, A0B5, A0B6, A0B7, A0B8, A0B9, A0BA, A0BB, A0BC, A0BD, A0BE, A0BF |
-| TigerLake | TigerlakePCH-LPSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.24.6 | A080, A081, A082, A083, A084, A085, A086, A087, A088, A089, A08A, A08B, A08C, A08D, A08E, A08F, A090, A091, A092, A093, A094, A095, A096, A097, A098, A099, A09A, A09B, A09C, A09D, A09E, A09F, A0A0, A0A1, A0A3, A0A4, A0A6, A0AC, A0AF, A0B0, A0B1, A0B2, A0B3, A0B4, A0B5, A0B6, A0B7, A0B8, A0B9, A0BA, A0BB, A0BC, A0BD, A0BE, A0BF |
-| TigerLake | TigerlakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.43.5 | 9A01, 9A02, 9A03, 9A04, 9A05, 9A07, 9A09, 9a0D, 9A0F, 9A11, 9A12, 9A14, 9a23, 9a25, 9a27, 9a29, 9a2B, 9a2D, 9a2f, 9a31, 9a33, 9A35, 9a37, 9a3B, 9a3D, 9a3F |
-
-
-## TigerLake — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| TigerLake | TigerLakePCH-HDmaSecExtension | 10.1.20314.8688S | 02/21/2025* | 10.1.34.13 |
-| TigerLake | TigerLakePCH-HSystem | 10.1.20314.8688S | 02/21/2025* | 10.1.34.13 |
-| TigerLake | TigerlakeDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.43.5 |
-| TigerLake | TigerlakePCH-LPDmaSecExtension | 10.1.20266.8668 | 02/21/2025* | 10.1.24.6 |
-| TigerLake | TigerlakePCH-LPSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.24.6 |
-| TigerLake | TigerlakeSystem | 10.1.20266.8668 | 02/21/2025* | 10.1.43.5 |
-
-
----
-
-## Valleyview2
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Valleyview2 | ValleyView2System | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 0F00, 0F12, 0F1C, 0F48, 0F4A, 0F4C, 0F4E |
-
-
-## Valleyview2 — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Valleyview2 | ValleyView2System | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## Wellsburg
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| Wellsburg | Chipset_System | 10.0.27.0 | 04/22/2015 | 10.0.27 | 8D7C |
-| Wellsburg | Chipset_System* | 10.0.26.0 | 02/26/2015 | 10.0.26 | 8D7C |
-| Wellsburg | WellsburgSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 8D10, 8D11, 8D12, 8D13, 8D14, 8D15, 8D16, 8D17, 8D18, 8D19, 8D1A, 8D1B, 8D1C, 8D1D, 8D1E, 8D1F, 8D22, 8D24, 8D40, 8D41, 8D42, 8D43, 8D44, 8D45, 8D46, 8D47, 8D48, 8D49, 8D4A, 8D4B, 8D4C, 8D4D, 8D4E, 8D4F, 8D50, 8D51, 8D52, 8D53, 8D54, 8D55, 8D56, 8D57, 8D58, 8D59, 8D5A, 8D5B, 8D5C, 8D5D, 8D5E, 8D5F, 8D7C, 8D7D, 8D7E, 8D7F |
-
-
-## Wellsburg — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| Wellsburg | Chipset_System | 10.0.27.0 | 04/22/2015 | 10.0.27 |
-| Wellsburg | Chipset_System* | 10.0.26.0 | 02/26/2015 | 10.0.26 |
-| Wellsburg | WellsburgSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-
-
----
-
-## WildcatPoint
-| Code Name | Platform / Chipset | Package | Date | Latest Version | HW_IDs |
-| :--- | :--- | :--- | :--- | :--- | :--- |
-| WildcatPoint | WildcatPointLPSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 | 9C90, 9C92, 9C94, 9C96, 9C98, 9C9A, 9CA2, 9CA4, 9CC1, 9CC2, 9CC3, 9CC5, 9CC6, 9CC7, 9CC9 |
-| WildcatPoint | wildcatpointlpSystem | 10.1.1.7 | 06/16/2015 | 10.1.1.7 | 9C90, 9C92, 9C94, 9C96, 9C98, 9C9A, 9CA2, 9CC1, 9CC2, 9CC3, 9CC5, 9CC6, 9CC7, 9CC9 |
-
-
-## WildcatPoint — Simplified
-| Code Name | Platform / Chipset | Package | Date | Latest Version |
-| :--- | :--- | :--- | :--- | :--- |
-| WildcatPoint | WildcatPointLPSystem | 10.1.18981.6008 | 04/01/2021* | 10.1.3.2 |
-| WildcatPoint | wildcatpointlpSystem | 10.1.1.7 | 06/16/2015 | 10.1.1.7 |
-
-
----
-
+**Prepared by:** Marcin Grygiel  
+**Source:** [Intel Chipset Updater](https://github.com/FirstEver-eu/Intel-Chipset-Updater/blob/main/Intel_Chipsets_Drivers_Latest.md)  
+**Generated:** 2025-11-12
