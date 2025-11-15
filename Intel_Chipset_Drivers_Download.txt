@@ -6,14 +6,14 @@ Prefix = \
 Name = Intel Chipset Device Software
 DriverVer = 29/07/2021,10.1.1.8
 Link = https://download.gigabyte.com/FileList/Driver/mb_driver_chipset_intel_w10.zip
-Prefix = \chipset
+Prefix = \chipset\SetupChipset.exe
 
 Name = Intel Chipset Device Software
 DriverVer = 30/05/2016,10.1.2.19
 Link = https://download1.gigabyte.com/Files/Driver/mb_driver_chipset_intel_x99_refresh.zip
-Prefix = 
+Prefix = \INFUpdate\Setup.exe
 
 Name = Intel Chipset Device Software
 DriverVer = 03/10/2016,10.1.1.38
 Link = https://download.gigabyte.com/FileList/Driver/mb_driver_chipset_intel_100series.zip
-Prefix = 
+Prefix = \INFUpdate\SetupChipset.exe
