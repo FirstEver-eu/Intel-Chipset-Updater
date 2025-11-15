@@ -302,7 +302,7 @@
 | LewisburgSystem.inf | 10.1.20314.8688(S) | 10.1.9.6 | 02/21/2025\* | 37C8, A190, A191, A192, A193, A194, A195, A196, A197, A198, A199, A19A, A19B, A19C, A19D, A19E, A19F, A1A1, A1A3, A1A4, A1B1, A1BA, A1BB, A1BC, A1BD, A1BE, A1C0, A1C1, A1C2, A1C3, A1C4, A1C5, A1C6, A1C7, A1E7, A1E8, A1E9, A1EA, A1EC, A1ED, A1F8, A1F9, A1FC, A210, A211, A212, A213, A214, A215, A216, A217, A218, A219, A21A, A21B, A21C, A21D, A21E, A21F, A221, A223, A224, A231, A23A, A23B, A23C, A23D, A23E, A240, A241, A242, A243, A244, A245, A246, A247, A267, A268, A269, A26A, A26C, A26D, A278, A279, A27C |
 
 ### Emmitsburg
-**Generation:** C621A/C627A – Server
+**Generation:** C621A/C627A Series – Server
 
 | Driver | Package | Version | Date | HW_IDs |
 |--------|---------|---------|------|--------|
@@ -389,7 +389,7 @@
 | SunrisePoint-HSystem.inf | 10.1.20314.8688(S) | 10.1.6.3 | 02/21/2025\* | A110, A111, A112, A113, A114, A115, A116, A117, A118, A119, A11A, A11B, A11C, A11D, A11E, A11F, A120, A121, A123, A124, A126, A141, A142, A143, A144, A145, A146, A147, A148, A149, A14A, A14B, A14C, A14D, A14E, A150, A151, A152, A153, A154, A155, A167, A168, A169, A16A |
 
 ### Wellsburg
-**Generation:** X99 Series – Enthusiast
+**Generation:** X99 / C610 Series – Enthusiast
 
 | Driver | Package | Version | Date | HW_IDs |
 |--------|---------|---------|------|--------|
@@ -403,7 +403,7 @@
 | WildcatPointLPSystem.inf | 10.1.18981.6008 | 10.1.3.2 | 04/01/2021\* | 9C90, 9C92, 9C94, 9C96, 9C98, 9C9A, 9CA2, 9CA4, 9CC1, 9CC2, 9CC3, 9CC5, 9CC6, 9CC7, 9CC9 |
 
 ### Patsburg
-**Generation:** X79 Series – Enthusiast
+**Generation:** X79 / C600 Series – Enthusiast
 
 | Driver | Package | Version | Date | HW_IDs |
 |--------|---------|---------|------|--------|
