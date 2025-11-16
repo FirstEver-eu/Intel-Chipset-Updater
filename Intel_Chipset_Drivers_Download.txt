@@ -19,7 +19,7 @@ Prefix = \SetupChipset.exe
 Name = Intel Chipset Device Software
 DriverVer = 09/07/2024,10.1.19913.8607
 Variant = Consumer
-Link = 
+Link = https://www.station-drivers.com/index.php/en/component/remository/func-download/6292/chk,ba48e86a0fa86c38383d054a30517e05/no_html,1/lang,en-gb/
 Prefix = \SetupChipset.exe
 
 Name = Intel Chipset Device Software
