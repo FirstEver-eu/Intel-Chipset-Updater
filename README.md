@@ -73,12 +73,9 @@ This tool is not affiliated with Intel Corporation. Drivers are sourced from off
 
 ## 📸 Screenshot
 
-<img width="602" height="832" alt="Intel Chipset Updater" src="https://github.com/user-attachments/assets/846c299c-3470-4d74-bd74-993936466a04" />
+<img width="602" height="1056" alt="Intel Chipset Updater" src="https://github.com/user-attachments/assets/872520ad-706b-4f8c-ad23-a73300620614" />
 
 ---
 **Maintainer**: Marcin Grygiel / www.firstever.tech  
 **Source**: https://github.com/FirstEver-eu/Intel-Chipset-Updater  
 **VirusTotal Scan**: [Result 0/98](https://www.virustotal.com/gui/url/73be62d14c2a11ebd6322142d44fbd32d843182f3e9f6d5a3a5b6841c552c077) (Clean)
-
-
-
