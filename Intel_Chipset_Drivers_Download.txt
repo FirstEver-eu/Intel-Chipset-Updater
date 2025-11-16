@@ -1,19 +1,29 @@
 Name = Intel Chipset Device Software
-DriverVer = 26/09/2025,10.1.20266.8668
+DriverVer = 02/21/2025,10.1.20314.8688
+Variant = Server
+Link = https://downloadmirror.intel.com/xxxxxx/SetupChipset.exe
+Prefix = \SetupChipset.exe
+
+Name = Intel Chipset Device Software
+DriverVer = 02/21/2025,10.1.20266.8668
+Variant = Consumer
 Link = https://downloadmirror.intel.com/861043/SetupChipset.exe
 Prefix = \SetupChipset.exe
 
 Name = Intel Chipset Device Software
-DriverVer = 29/07/2021,10.1.1.8
-Link = https://download.gigabyte.com/FileList/Driver/mb_driver_chipset_intel_w10.zip
-Prefix = \chipset\SetupChipset.exe
+DriverVer = 02/21/2025,10.1.20256.8665
+Variant = Consumer
+Link = https://downloadmirror.intel.com/xxxxxx/SetupChipset.exe
+Prefix = \SetupChipset.exe
 
 Name = Intel Chipset Device Software
-DriverVer = 30/05/2016,10.1.2.19
-Link = https://download1.gigabyte.com/Files/Driver/mb_driver_chipset_intel_x99_refresh.zip
-Prefix = \INFUpdate\Setup.exe
+DriverVer = 03/04/2024,10.1.19913.8607
+Variant = Consumer
+Link = https://downloadmirror.intel.com/xxxxxx/SetupChipset.exe
+Prefix = \SetupChipset.exe
 
 Name = Intel Chipset Device Software
-DriverVer = 03/10/2016,10.1.1.38
-Link = https://download.gigabyte.com/FileList/Driver/mb_driver_chipset_intel_100series.zip
-Prefix = \INFUpdate\SetupChipset.exe
+DriverVer = 04/01/2021,10.1.18981.6008
+Variant = Consumer
+Link = https://downloadmirror.intel.com/xxxxxx/SetupChipset.exe
+Prefix = \SetupChipset.exe
