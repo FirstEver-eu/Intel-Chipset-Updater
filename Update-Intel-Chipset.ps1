@@ -1,5 +1,5 @@
 # Intel Chipset Drivers Update Script
-# Based on proven detection from Intel Chipset List
+# Based on Intel Chipset Drivers Latest database
 # Downloads latest drivers from GitHub and updates if newer versions available
 # By Marcin Grygiel / www.firstever.tech
 
@@ -11,16 +11,79 @@ if (-NOT ([Security.Principal.WindowsPrincipal] [Security.Principal.WindowsIdent
 
 # GitHub repository URLs
 $githubBaseUrl = "https://raw.githubusercontent.com/FirstEver-eu/Intel-Chipset-Updater/main/"
-$chipsetDriversUrl = $githubBaseUrl + "chipset-drivers.txt"
-$chipsetListUrl = $githubBaseUrl + "Intel_Chipsets_List.md"
+$chipsetDriversUrl = $githubBaseUrl + "Intel_Chipset_Drivers_Latest.md"
+$downloadListUrl = $githubBaseUrl + "Intel_Chipset_Drivers_Download.txt"
 
 # Temporary directory for downloads
 $tempDir = "C:\Windows\Temp\IntelChipset"
 
+# Function to detect Intel Chipset HW_IDs from the local system (MAIN CHIPSET ONLY)
+function Get-IntelChipsetHWIDs {
+    $intelChipsets = @()
+    $chipsetCount = 0
+    $nonChipsetCount = 0
+
+    # Get all PCI devices from computer
+    $pciDevices = Get-PnpDevice -Class 'System' -ErrorAction SilentlyContinue | 
+                  Where-Object { $_.HardwareID -like '*PCI\VEN_8086*' -and $_.Status -eq 'OK' }
+
+    foreach ($device in $pciDevices) {
+        foreach ($hwid in $device.HardwareID) {
+            if ($hwid -match 'PCI\\VEN_8086&DEV_([A-F0-9]{4})') {
+                $deviceId = $matches[1]
+                $description = $device.FriendlyName
+
+                # Focus on main chipset components only - ignore CPU-related devices
+                # Main chipsets typically have descriptions containing "Chipset", "LPC", "PCI Express Root Port", etc.
+                if ($description -match 'Chipset|LPC|PCI Express Root Port|PCI-to-PCI bridge|Motherboard Resources') {
+                    $intelChipsets += [PSCustomObject]@{
+                        HW_ID = $deviceId
+                        Description = $description
+                        HardwareID = $hwid
+                        InstanceId = $device.InstanceId
+                        IsChipset = $true
+                    }
+                    $chipsetCount++
+                } else {
+                    $nonChipsetCount++
+                }
+            }
+        }
+    }
+
+    # If no specific chipset devices found, fall back to the original detection but take only first few
+    if ($intelChipsets.Count -eq 0) {
+        foreach ($device in $pciDevices) {
+            foreach ($hwid in $device.HardwareID) {
+                if ($hwid -match 'PCI\\VEN_8086&DEV_([A-F0-9]{4})') {
+                    $deviceId = $matches[1]
+                    $description = $device.FriendlyName
+
+                    $intelChipsets += [PSCustomObject]@{
+                        HW_ID = $deviceId
+                        Description = $description
+                        HardwareID = $hwid
+                        InstanceId = $device.InstanceId
+                        IsChipset = $false
+                    }
+                    $chipsetCount++
+
+                    # Limit to 5 devices to avoid CPU components
+                    if ($intelChipsets.Count -ge 5) { break }
+                }
+            }
+            if ($intelChipsets.Count -ge 5) { break }
+        }
+    }
+
+    Write-Host "Scanning completed: found $chipsetCount potential chipset devices" -ForegroundColor Green
+    return $intelChipsets | Sort-Object HW_ID -Unique
+}
+
 # Function to get current driver version for a device
 function Get-CurrentDriverVersion {
     param([string]$DeviceInstanceId)
-    
+
     try {
         $device = Get-PnpDevice | Where-Object {$_.InstanceId -eq $deviceInstanceId}
         if ($device) {
@@ -35,7 +98,7 @@ function Get-CurrentDriverVersion {
             $driverInfo = Get-CimInstance -ClassName Win32_PnPSignedDriver | Where-Object { 
                 $_.DeviceID -eq $deviceInstanceId -and $_.DriverVersion
             } | Select-Object -First 1
-            
+
             if ($driverInfo) {
                 return $driverInfo.DriverVersion
             }
@@ -60,7 +123,7 @@ function Clear-TempDriverFolders {
 # Function to download and parse driver information from GitHub
 function Get-LatestDriverInfo {
     param([string]$Url)
-    
+
     try {
         $content = Invoke-WebRequest -Uri $Url -UseBasicParsing -ErrorAction Stop
         return $content.Content
@@ -71,217 +134,257 @@ function Get-LatestDriverInfo {
     }
 }
 
-# Function to parse chipset drivers information
-function Parse-ChipsetDriverInfo {
-    param([string]$DriverInfo)
-    
-    $drivers = @()
-    $lines = $DriverInfo -split "`n" | ForEach-Object { $_.Trim() }
-    
-    for ($i = 0; $i -lt $lines.Count; $i++) {
-        if ($lines[$i] -eq "Intel Chipset Device Software") {
-            $driver = @{
-                Name = $lines[$i]
-                Version = $null
-                DownloadUrl = $null
-            }
-            
-            # Look for DriverVer in next lines
-            for ($j = $i + 1; $j -lt [Math]::Min($i + 5, $lines.Count); $j++) {
-                if ($lines[$j] -match 'DriverVer\s*=\s*[^,]+,([0-9.]+)') {
-                    $driver.Version = $matches[1]
-                } elseif ($lines[$j] -match '^https?://') {
-                    $driver.DownloadUrl = $lines[$j]
-                    break
-                }
-            }
-            
-            if ($driver.Version -and $driver.DownloadUrl) {
-                $drivers += $driver
-            }
-        }
-    }
-    
-    return $drivers
-}
+# Function to parse chipset drivers information from Markdown
+function Parse-ChipsetDriversFromMarkdown {
+    param([string]$MarkdownContent)
 
-# Function to parse chipset list information
-function Parse-ChipsetList {
-    param([string]$ChipsetListInfo)
-    
-    $chipsetMap = @{}
-    $lines = $ChipsetListInfo -split "`n" | ForEach-Object { $_.Trim() }
-    $inTable = $false
-    $headers = @()
-    
-    foreach ($line in $lines) {
-        if ($line -match '^\|.*\|.*\|.*\|$' -and $line -notmatch '^\|\s*:---') {
-            if (-not $inTable) {
-                # This is the header row
-                $headers = ($line -split '\|' | ForEach-Object { $_.Trim() }) | Where-Object { $_ }
-                $inTable = $true
+    $chipsetData = @{}
+    $lines = $MarkdownContent -split "`n"
+    $currentPlatform = $null
+    $currentGeneration = $null
+    $inMainstreamSection = $false
+    $inWorkstationSection = $false
+    $inXeonSection = $false
+    $inAtomSection = $false
+
+    for ($i = 0; $i -lt $lines.Count; $i++) {
+        $line = $lines[$i].Trim()
+
+        # Detect section headers (like ### Mainstream Desktop/Mobile)
+        if ($line -match '^### Mainstream Desktop/Mobile') {
+            $inMainstreamSection = $true
+            $inWorkstationSection = $false
+            $inXeonSection = $false
+            $inAtomSection = $false
+            continue
+        }
+        elseif ($line -match '^### Workstation/Enthusiast') {
+            $inMainstreamSection = $false
+            $inWorkstationSection = $true
+            $inXeonSection = $false
+            $inAtomSection = $false
+            continue
+        }
+        elseif ($line -match '^### Xeon/Server Platforms') {
+            $inMainstreamSection = $false
+            $inWorkstationSection = $false
+            $inXeonSection = $true
+            $inAtomSection = $false
+            continue
+        }
+        elseif ($line -match '^### Atom/Low-Power Platforms') {
+            $inMainstreamSection = $false
+            $inWorkstationSection = $false
+            $inXeonSection = $false
+            $inAtomSection = $true
+            continue
+        }
+
+        # Detect platform headers (like #### Panther Lake)
+        if ($line -match '^####\s+(.+)') {
+            $currentPlatform = $matches[1]
+            
+            # Determine section for platform display
+            if ($inMainstreamSection) {
+                $sectionName = "Mainstream Desktop/Mobile"
+            } elseif ($inWorkstationSection) {
+                $sectionName = "Workstation/Enthusiast"
+            } elseif ($inXeonSection) {
+                $sectionName = "Xeon/Server Platforms"
+            } elseif ($inAtomSection) {
+                $sectionName = "Atom/Low-Power Platforms"
             } else {
-                # This is a data row
-                $columns = ($line -split '\|' | ForEach-Object { $_.Trim() }) | Where-Object { $_ }
-                if ($columns.Count -ge 4) {
-                    $hwId = $columns[0]
-                    $platform = $columns[1]
-                    $driverFile = $columns[2]
-                    $maxVersion = $columns[3]
-                    
-                    $chipsetMap[$hwId] = @{
-                        Platform = $platform
-                        DriverFile = $driverFile
-                        MaxVersion = $maxVersion
-                        HasAsterisk = $maxVersion -match '\*$'
+                $sectionName = "Unknown"
+            }
+            
+            continue
+        }
+
+        # Detect generation headers (like **Generation:** 7 Series – Desktop/Mobile)
+        if ($line -match '\*\*Generation:\*\*\s*(.+)') {
+            $currentGeneration = $matches[1]
+            continue
+        }
+
+        # Detect table headers and data rows
+        if ($line -match '^\|.*Driver.*\|.*Package.*\|.*Version.*\|.*Date.*\|.*HW_IDs.*\|$' -and $currentPlatform) {
+            # Skip separator line
+            $i++
+
+            # Process data rows until we hit a non-table line
+            while ($i -lt $lines.Count -and $lines[$i] -match '^\|.*\|.*\|.*\|.*\|.*\|$') {
+                $dataLine = $lines[$i].Trim()
+                $i++
+
+                # Skip separator lines
+                if ($dataLine -match '^\|\s*:---') { continue }
+
+                # Parse table row
+                $columns = ($dataLine -split '\|' | ForEach-Object { $_.Trim() }) | Where-Object { $_ }
+                if ($columns.Count -ge 5) {
+                    $driver = $columns[0]
+                    $package = $columns[1]
+                    $version = $columns[2]
+                    $date = $columns[3] -replace '\\', ''  # Remove backslash if present
+                    $hwIds = $columns[4] -split ',' | ForEach-Object { $_.Trim() }
+
+                    foreach ($hwId in $hwIds) {
+                        if ($hwId -match '^[A-F0-9]{4}$') {
+                            $chipsetData[$hwId] = @{
+                                Platform = $currentPlatform
+                                Section = $sectionName
+                                Generation = $currentGeneration
+                                Driver = $driver
+                                Package = $package
+                                Version = $version
+                                Date = $date
+                                HasAsterisk = $date -match '\*$'
+                            }
+                        }
                     }
                 }
             }
-        } elseif ($line -match '^[^|]' -and $inTable) {
-            # End of table
-            $inTable = $false
         }
     }
-    
-    return $chipsetMap
+
+    return $chipsetData
+}
+
+# Function to parse download list
+function Parse-DownloadList {
+    param([string]$DownloadListContent)
+
+    $downloadData = @{}
+    $blocks = $DownloadListContent -split "`n`n" | Where-Object { $_.Trim() }
+
+    foreach ($block in $blocks) {
+        $name = $null
+        $driverVer = $null
+        $link = $null
+        $prefix = $null
+        $variant = "Consumer" # Default value
+
+        $lines = $block -split "`n" | ForEach-Object { $_.Trim() }
+        foreach ($line in $lines) {
+            if ($line -match '^Name\s*=\s*(.+)') {
+                $name = $matches[1]
+            } elseif ($line -match '^DriverVer\s*=\s*[^,]+,([0-9.]+)') {
+                $driverVer = $matches[1]
+            } elseif ($line -match '^Link\s*=\s*(.+)') {
+                $link = $matches[1]
+            } elseif ($line -match '^Prefix\s*=\s*(.+)') {
+                $prefix = $matches[1]
+            } elseif ($line -match '^Variant\s*=\s*(.+)') {
+                $variant = $matches[1]
+            }
+        }
+
+        if ($driverVer -and $link) {
+            $key = "$driverVer-$variant"
+            $downloadData[$key] = @{
+                Name = $name
+                DriverVer = $driverVer
+                Link = $link
+                Prefix = $prefix
+                Variant = $variant
+            }
+        }
+    }
+
+    return $downloadData
 }
 
 # Function to download and extract file
 function Download-Extract-File {
-    param([string]$Url, [string]$OutputPath, [string]$Type)
-    
+    param([string]$Url, [string]$OutputPath, [string]$Prefix)
+
     try {
-        $tempFile = "$tempDir\temp_$(Get-Random)"
-        
+        $tempFile = "$tempDir\temp_$(Get-Random).$([System.IO.Path]::GetExtension($Url).TrimStart('.'))"
+
         # Download file
+        Write-Host "Downloading from: $Url" -ForegroundColor Gray
         Invoke-WebRequest -Uri $Url -OutFile $tempFile -UseBasicParsing
-        
+
         if (Test-Path $tempFile) {
-            if ($Type -eq "ZIP") {
+            # Determine file type and extract/copy accordingly
+            $fileExtension = [System.IO.Path]::GetExtension($Url).ToLower()
+            
+            if ($fileExtension -eq '.zip') {
                 # Extract ZIP file
                 try {
                     Add-Type -AssemblyName System.IO.Compression.FileSystem
                     [System.IO.Compression.ZipFile]::ExtractToDirectory($tempFile, $OutputPath)
                     $success = $true
+                    Write-Host "ZIP file extracted successfully." -ForegroundColor Green
                 } catch {
                     # Fallback to COM object
                     try {
+                        Write-Host "Using COM object for ZIP extraction..." -ForegroundColor Yellow
                         $shell = New-Object -ComObject Shell.Application
                         $zipFolder = $shell.NameSpace($tempFile)
                         $destFolder = $shell.NameSpace($OutputPath)
                         $destFolder.CopyHere($zipFolder.Items(), 0x14) # 0x14 = No UI + Overwrite
                         $success = $true
+                        Write-Host "ZIP file extracted successfully using COM." -ForegroundColor Green
                     } catch {
+                        Write-Host "Error extracting ZIP file: $_" -ForegroundColor Red
                         $success = $false
                     }
                 }
-            } else {
-                # For EXE, just copy to output path
+            } elseif ($fileExtension -eq '.exe') {
+                # For EXE, copy to output path with proper structure
                 New-Item -ItemType Directory -Path $OutputPath -Force | Out-Null
-                Copy-Item $tempFile "$OutputPath\SetupChipset.exe" -Force
+
+                if ($Prefix -and $Prefix -ne '\SetupChipset.exe') {
+                    # Create subdirectory structure
+                    $subDir = Split-Path $Prefix.TrimStart('\') -Parent
+                    if ($subDir) {
+                        $fullOutputPath = Join-Path $OutputPath $subDir
+                        New-Item -ItemType Directory -Path $fullOutputPath -Force | Out-Null
+                    }
+
+                    $outputFile = Join-Path $OutputPath ($Prefix.TrimStart('\'))
+                    Copy-Item $tempFile $outputFile -Force
+                    Write-Host "EXE file copied to: $outputFile" -ForegroundColor Green
+                } else {
+                    # Default case
+                    Copy-Item $tempFile "$OutputPath\SetupChipset.exe" -Force
+                    Write-Host "EXE file copied to: $OutputPath\SetupChipset.exe" -ForegroundColor Green
+                }
                 $success = $true
+            } else {
+                # Unknown file type
+                Write-Host "Unknown file type: $fileExtension" -ForegroundColor Red
+                $success = $false
             }
-            
+
             Remove-Item $tempFile -Force -ErrorAction SilentlyContinue
             return $success
         }
     } catch {
-        Write-Host "Error downloading or extracting driver package." -ForegroundColor Red
+        Write-Host "Error downloading or extracting driver package: $_" -ForegroundColor Red
     }
     return $false
 }
 
-# Function to get appropriate driver for device
-function Get-DriverForDevice {
-    param([string]$DeviceHwId, [array]$AvailableDrivers, [hashtable]$ChipsetMap)
-    
-    # Find matching HW_ID in chipset map
-    $matchingHwId = $ChipsetMap.Keys | Where-Object { 
-        $deviceHwId -like "*$_*" -or $deviceHwId -eq $_
-    } | Select-Object -First 1
-    
-    if ($matchingHwId) {
-        $chipsetInfo = $ChipsetMap[$matchingHwId]
-        $maxVersion = $chipsetInfo.MaxVersion -replace '\*$', ''
-        
-        # Find the best driver for this platform
-        $bestDriver = $null
-        
-        # For X79 and X99 platforms - use exact version (10.1.2.19)
-        if ($matchingHwId -eq "1E10" -or $matchingHwId -eq "8D50") {
-            $bestDriver = $AvailableDrivers | Where-Object { $_.Version -eq $maxVersion } | Select-Object -First 1
-            if ($bestDriver) {
-                Write-Host "X79/X99 platform detected - using optimized driver $($bestDriver.Version)" -ForegroundColor Cyan
-            }
-        } else {
-            # For other platforms: if max version > 10.1.2.19, use the latest driver
-            if ([version]$maxVersion -gt [version]"10.1.2.19") {
-                $bestDriver = $AvailableDrivers | Sort-Object { [version]$_.Version } -Descending | Select-Object -First 1
-            } else {
-                # For older platforms, use exact version from the list
-                $bestDriver = $AvailableDrivers | Where-Object { $_.Version -eq $maxVersion } | Select-Object -First 1
-            }
-        }
-        
-        # Fallback if exact version not found
-        if (-not $bestDriver) {
-            $bestDriver = $AvailableDrivers | Where-Object { [version]$_.Version -le [version]$maxVersion } | 
-                Sort-Object { [version]$_.Version } -Descending | Select-Object -First 1
-        }
-        
-        if ($bestDriver) {
-            return @{
-                Driver = $bestDriver
-                ChipsetInfo = $chipsetInfo
-                HwId = $matchingHwId
-            }
-        }
-    }
-    
-    return $null
-}
-
 # Function to install chipset driver
 function Install-ChipsetDriver {
-    param([hashtable]$DriverInfo, [string]$DriverPath)
-    
-    $version = $DriverInfo.Driver.Version
-    $setupPath = $null
-    
-    # Determine setup path based on version
-    switch ($version) {
-        "10.1.1.8" {
-            $setupPath = Join-Path $DriverPath "SetupChipset.exe"
-        }
-        "10.1.2.19" {
-            $setupPath = Join-Path $DriverPath "INFUpdate\Setup.exe"
-        }
-        "10.1.1.38" {
-            $setupPath = Join-Path $DriverPath "INFUpdate\SetupChipset.exe"
-        }
-        default {
-            # For newer versions (10.1.20266.8668 and above)
-            if ($version -match "^10\.1\.[0-9]{5}") {
-                $setupPath = Join-Path $DriverPath "SetupChipset.exe"
-            } else {
-                # Fallback
-                $exeFiles = Get-ChildItem -Path $DriverPath -Filter "*.exe" -Recurse | Where-Object {
-                    $_.Name -like "*Setup*" -or $_.Name -like "*Install*"
-                }
-                if ($exeFiles) {
-                    $setupPath = $exeFiles[0].FullName
-                }
-            }
-        }
+    param([string]$DriverPath, [string]$Prefix)
+
+    # Determine setup path based on prefix
+    if ($Prefix) {
+        $setupPath = Join-Path $DriverPath ($Prefix.TrimStart('\'))
+    } else {
+        $setupPath = Join-Path $DriverPath "SetupChipset.exe"
     }
-    
-    if ($setupPath -and (Test-Path $setupPath)) {
-        Write-Host "Running installer..." -ForegroundColor Cyan
+
+    if (Test-Path $setupPath) {
+        Write-Host "Running installer: $setupPath" -ForegroundColor Cyan
         try {
-            # Uruchom instalator z parametrami -S -OVERALL -downgrade -norestart
+            # Run installer with parameters -S -OVERALL -downgrade -norestart
             $process = Start-Process -FilePath $setupPath -ArgumentList "-S -OVERALL -downgrade -norestart" -Wait -PassThru
-            
-            # Kod 3010 = SUCCESS - RESTART REQUIRED (to nie jest błąd!)
+
+            # Code 3010 = SUCCESS - RESTART REQUIRED (this is not an error!)
             if ($process.ExitCode -eq 0 -or $process.ExitCode -eq 3010) {
                 Write-Host "Driver installed successfully." -ForegroundColor Green
                 return $true
@@ -289,29 +392,51 @@ function Install-ChipsetDriver {
                 Write-Host "Installer finished with exit code: $($process.ExitCode)" -ForegroundColor Red
                 return $false
             }
-            
+
         } catch {
             Write-Host "Error running installer: $_" -ForegroundColor Red
             return $false
         }
     } else {
-        Write-Host "Error: Installer not found" -ForegroundColor Red
+        Write-Host "Error: Installer not found at $setupPath" -ForegroundColor Red
+        # Try to find any setup executable
+        $exeFiles = Get-ChildItem -Path $DriverPath -Filter "*.exe" -Recurse | Where-Object {
+            $_.Name -like "*Setup*" -or $_.Name -like "*Install*"
+        }
+        if ($exeFiles) {
+            Write-Host "Found alternative installer: $($exeFiles[0].FullName)" -ForegroundColor Yellow
+            return Install-ChipsetDriver -DriverPath $DriverPath -Prefix "\$($exeFiles[0].Name)"
+        }
         return $false
     }
 }
 
+# Main script execution
 Write-Host "=== Intel Chipset Drivers Update ===" -ForegroundColor Cyan
-Write-Host "Downloading latest driver information..." -ForegroundColor Green
+Write-Host "Scanning for Intel Chipset..." -ForegroundColor Green
 
 # Create temporary directory
 Clear-TempDriverFolders
 New-Item -ItemType Directory -Path $tempDir -Force | Out-Null
 
-# Download latest driver information
-$chipsetInfo = Get-LatestDriverInfo -Url $chipsetDriversUrl
-$chipsetListInfo = Get-LatestDriverInfo -Url $chipsetListUrl
+# Detect Intel Chipset HW_IDs on local system (MAIN CHIPSET ONLY)
+$detectedIntelChipsets = Get-IntelChipsetHWIDs
 
-if (-not $chipsetInfo -or -not $chipsetListInfo) {
+if ($detectedIntelChipsets.Count -eq 0) {
+    Write-Host "No Intel chipset devices found." -ForegroundColor Yellow
+    Write-Host "If you have an Intel platform, make sure you have at least SandyBridge or newer platform." -ForegroundColor Yellow
+    Clear-TempDriverFolders
+    exit
+}
+
+Write-Host "Found $($detectedIntelChipsets.Count) Intel chipset device(s)" -ForegroundColor Green
+
+# Download latest driver information
+Write-Host "Downloading latest driver information..." -ForegroundColor Green
+$chipsetInfo = Get-LatestDriverInfo -Url $chipsetDriversUrl
+$downloadListInfo = Get-LatestDriverInfo -Url $downloadListUrl
+
+if (-not $chipsetInfo -or -not $downloadListInfo) {
     Write-Host "Failed to download driver information. Exiting." -ForegroundColor Red
     Clear-TempDriverFolders
     exit
@@ -319,87 +444,127 @@ if (-not $chipsetInfo -or -not $chipsetListInfo) {
 
 # Parse driver information
 Write-Host "Parsing driver information..." -ForegroundColor Green
-$availableDrivers = Parse-ChipsetDriverInfo -DriverInfo $chipsetInfo
-$chipsetMap = Parse-ChipsetList -ChipsetListInfo $chipsetListInfo
+$chipsetData = Parse-ChipsetDriversFromMarkdown -MarkdownContent $chipsetInfo
+$downloadData = Parse-DownloadList -DownloadListContent $downloadListInfo
 
-if ($availableDrivers.Count -eq 0 -or $chipsetMap.Count -eq 0) {
+if ($chipsetData.Count -eq 0 -or $downloadData.Count -eq 0) {
     Write-Host "Error: Could not parse driver information." -ForegroundColor Red
     Clear-TempDriverFolders
     exit
 }
 
-$latestDriver = $availableDrivers | Sort-Object { [version]$_.Version } -Descending | Select-Object -First 1
-Write-Host "Intel Chipset Device Software: $($latestDriver.Version)" -ForegroundColor Yellow
-Write-Host ""
-
-# Find Intel Chipset devices
-Write-Host "Scanning for Intel Platform..." -ForegroundColor Green
-
-# Get all Intel devices (VEN_8086)
-$intelDevices = Get-PnpDevice | Where-Object {
-    $_.InstanceId -like "*VEN_8086*" -and $_.Class -eq "System" -and $_.Status -eq "OK"
-}
-
-$chipsetDevices = @()
+# Find matching chipset platforms
+$matchingChipsets = @()
 $chipsetUpdateAvailable = $false
 
-foreach ($device in $intelDevices) {
-    $driverMatch = Get-DriverForDevice -DeviceHwId $device.InstanceId -AvailableDrivers $availableDrivers -ChipsetMap $chipsetMap
-    if ($driverMatch) {
-        $chipsetDevices += @{
+foreach ($device in $detectedIntelChipsets) {
+    $hwId = $device.HW_ID
+    if ($chipsetData.ContainsKey($hwId)) {
+        $chipsetInfo = $chipsetData[$hwId]
+        # Używamy InstanceId do pobrania wersji sterownika
+        $currentVersion = Get-CurrentDriverVersion -DeviceInstanceId $device.InstanceId
+
+        $matchingChipsets += @{
             Device = $device
-            DriverMatch = $driverMatch
+            ChipsetInfo = $chipsetInfo
+            CurrentVersion = $currentVersion
+            HardwareID = $device.HardwareID
+            InstanceId = $device.InstanceId
         }
+
+        Write-Host "Found compatible platform: $($chipsetInfo.Platform) (HW_ID: $hwId)" -ForegroundColor Green
     }
 }
 
-if ($chipsetDevices.Count -eq 0) {
+if ($matchingChipsets.Count -eq 0) {
     Write-Host "No compatible Intel chipset platforms found." -ForegroundColor Yellow
-} else {
-    Write-Host "Found $($chipsetDevices.Count) Intel chipset platform(s):" -ForegroundColor Green
-    
-    foreach ($chipsetDevice in $chipsetDevices) {
-        $device = $chipsetDevice.Device
-        $driverMatch = $chipsetDevice.DriverMatch
-        $currentVersion = Get-CurrentDriverVersion -DeviceInstanceId $device.InstanceId
-        $platformVersion = $driverMatch.Driver.Version
-        $platform = $driverMatch.ChipsetInfo.Platform
-        
-        Write-Host "`nPlatform: $platform" -ForegroundColor White
-        Write-Host "Instance ID: $($device.InstanceId)" -ForegroundColor Gray
-        
-        if ($currentVersion) {
-            Write-Host "Current Version: $currentVersion" -ForegroundColor Gray
-            Write-Host "Platform Version: $platformVersion" -ForegroundColor Gray
-            
-            if ($currentVersion -eq $platformVersion) {
-                Write-Host "Status: Already on latest version" -ForegroundColor Green
-            } else {
-                Write-Host "Status: Update available! ($currentVersion -> $platformVersion)" -ForegroundColor Yellow
-                $chipsetUpdateAvailable = $true
-            }
-        } else {
-            Write-Host "Current Version: Unable to determine" -ForegroundColor Gray
-            Write-Host "Platform Version: $platformVersion" -ForegroundColor Gray
-            Write-Host "Status: Will attempt to install driver" -ForegroundColor Yellow
-            $chipsetUpdateAvailable = $true
-        }
-        
-        # Show asterisk warning if needed
-        if ($driverMatch.ChipsetInfo.HasAsterisk) {
-            Write-Host "" -ForegroundColor Yellow
-            Write-Host "* The version of the driver package provided on the ASUS website is not necessarily" -ForegroundColor Yellow
-            Write-Host "  indicative of the version of the chipset drivers that will be installed in your" -ForegroundColor Yellow
-            Write-Host "  operating system. It is recommended to verify the actual driver versions post-" -ForegroundColor Yellow
-            Write-Host "  installation through the Device Manager." -ForegroundColor Yellow
+    Write-Host "If you have an Intel platform, make sure you have at least SandyBridge or newer platform." -ForegroundColor Yellow
+    Clear-TempDriverFolders
+    exit
+}
+
+# Group by platform to avoid duplicate installations of the same driver
+$uniquePlatforms = @{}
+foreach ($match in $matchingChipsets) {
+    $platform = $match.ChipsetInfo.Platform
+    $package = $match.ChipsetInfo.Package
+
+    if (-not $uniquePlatforms.ContainsKey($platform)) {
+        $uniquePlatforms[$platform] = @{
+            ChipsetInfo = $match.ChipsetInfo
+            Devices = @($match.Device)
+            CurrentVersions = @()
         }
     }
+
+    if ($match.CurrentVersion) {
+        $uniquePlatforms[$platform].CurrentVersions += $match.CurrentVersion
+    }
+}
+
+# Display platform information
+Write-Host "`n=== Platform Information ===" -ForegroundColor Cyan
+
+foreach ($platformName in $uniquePlatforms.Keys) {
+    $platformData = $uniquePlatforms[$platformName]
+    $chipsetInfo = $platformData.ChipsetInfo
+    $devices = $platformData.Devices
+    $currentVersions = $platformData.CurrentVersions | Sort-Object -Unique
+
+    Write-Host "Platform: $platformName" -ForegroundColor White
+    if ($chipsetInfo.Generation) {
+        Write-Host "Generation: $($chipsetInfo.Generation)" -ForegroundColor Gray
+    }
+
+    if ($currentVersions.Count -gt 0) {
+        Write-Host "Current Version: $(($currentVersions -join ', '))" -ForegroundColor Gray
+    } else {
+        Write-Host "Current Version: Unable to determine" -ForegroundColor Gray
+    }
+
+    # Latest Version without date
+    Write-Host "Latest Version: $($chipsetInfo.Version)" -ForegroundColor Gray
+
+    # Installer Version with date in yellow
+    $installerVersionDisplay = "$($chipsetInfo.Package) ($($chipsetInfo.Date))"
+    Write-Host "Installer Version: $installerVersionDisplay" -ForegroundColor Yellow
+
+    # Check if update is available
+    $needsUpdate = $false
+    if ($currentVersions.Count -gt 0) {
+        foreach ($currentVersion in $currentVersions) {
+            if ($currentVersion -ne $chipsetInfo.Version) {
+                $needsUpdate = $true
+                break
+            }
+        }
+
+        if (-not $needsUpdate) {
+            Write-Host "Status: Already on latest version" -ForegroundColor Green
+        } else {
+            Write-Host "Status: New version available! ($(($currentVersions -join ', ')) -> $($chipsetInfo.Version))" -ForegroundColor Yellow
+            $chipsetUpdateAvailable = $true
+        }
+    } else {
+        Write-Host "Status: Driver will be installed" -ForegroundColor Yellow
+        $chipsetUpdateAvailable = $true
+    }
+
+    # Show asterisk warning if needed
+    if ($chipsetInfo.HasAsterisk) {
+        Write-Host "" -ForegroundColor Yellow
+        Write-Host "Note: Drivers marked with (*) do not have embedded dates" -ForegroundColor Yellow
+        Write-Host "      and will show as 07/18/1968 in system. The actual" -ForegroundColor Yellow
+        Write-Host "      driver release corresponds to the installer date." -ForegroundColor Yellow
+    }
+
+    Write-Host ""
 }
 
 # If all devices are up to date, ask if user wants to reinstall anyway
-if ((-not $chipsetUpdateAvailable) -and ($chipsetDevices.Count -gt 0)) {
-    Write-Host "`nAll platforms are up to date." -ForegroundColor Green
-    $response = Read-Host "Do you want to force reinstall the driver anyway? (Y/N)"
+if ((-not $chipsetUpdateAvailable) -and ($uniquePlatforms.Count -gt 0)) {
+    Write-Host "All platforms are up to date." -ForegroundColor Green
+    $response = Read-Host "Do you want to force reinstall Intel Chipset drivers anyway? (Y/N)"
     if ($response -eq "Y" -or $response -eq "y") {
         $chipsetUpdateAvailable = $true
     } else {
@@ -414,10 +579,10 @@ if ($chipsetUpdateAvailable) {
     Write-Host ""
     Write-Host "IMPORTANT NOTICE:" -ForegroundColor Yellow
     Write-Host "The driver update process may take several minutes to complete." -ForegroundColor Yellow
-    Write-Host "During installation, the screen may temporarily go black and some devices" -ForegroundColor Yellow
-    Write-Host "may temporarily disconnect as PCIe bus drivers are being updated." -ForegroundColor Yellow
-    Write-Host "This is normal behavior and the system will return to normal operation" -ForegroundColor Yellow
-    Write-Host "once the installation is complete." -ForegroundColor Yellow
+    Write-Host "During installation, the screen may temporarily go black and some" -ForegroundColor Yellow
+    Write-Host "devices may temporarily disconnect as PCIe bus drivers are being" -ForegroundColor Yellow
+    Write-Host "updated. This is normal behavior and the system will return to" -ForegroundColor Yellow
+    Write-Host "normal operation once the installation is complete." -ForegroundColor Yellow
     Write-Host ""
     $response = Read-Host "Do you want to proceed with driver update? (Y/N)"
 } else {
@@ -425,41 +590,73 @@ if ($chipsetUpdateAvailable) {
 }
 
 if ($response -eq "Y" -or $response -eq "y") {
-    Write-Host "`nStarting driver update process in silent mode..." -ForegroundColor Green
-    
-    # Download and install drivers for each platform
+    Write-Host "`nStarting driver update process..." -ForegroundColor Green
+
+    # INTELLIGENT PACKAGE MANAGEMENT: Group by package version and install only unique packages
+    $packageGroups = @{}
+    foreach ($platformName in $uniquePlatforms.Keys) {
+        $platformData = $uniquePlatforms[$platformName]
+        $packageVersion = $platformData.ChipsetInfo.Package
+        
+        if (-not $packageGroups.ContainsKey($packageVersion)) {
+            $packageGroups[$packageVersion] = @()
+        }
+        $packageGroups[$packageVersion] += $platformName
+    }
+
+    # Sort packages by version (newest first) to ensure we install the latest versions
+    $sortedPackages = $packageGroups.Keys | Sort-Object { [version]($_ -replace '\s*\(S\)\s*', '') } -Descending
+
     $successCount = 0
-    
-    foreach ($chipsetDevice in $chipsetDevices) {
-        $device = $chipsetDevice.Device
-        $driverMatch = $chipsetDevice.DriverMatch
-        $driver = $driverMatch.Driver
-        $platform = $driverMatch.ChipsetInfo.Platform
+    $processedPackages = @{}
+
+    foreach ($packageVersion in $sortedPackages) {
+        $platforms = $packageGroups[$packageVersion]
         
-        Write-Host "`nUpdating $platform..." -ForegroundColor Cyan
-        
-        # Determine file type
-        $fileType = if ($driver.DownloadUrl -match '\.zip$') { "ZIP" } else { "EXE" }
-        $driverPath = "$tempDir\$($driver.Version)_$(Get-Random)"
-        
-        Write-Host "Downloading Intel Chipset Driver Software $($driver.Version)..." -ForegroundColor Green
-        if (Download-Extract-File -Url $driver.DownloadUrl -OutputPath $driverPath -Type $fileType) {
-            Write-Host "Driver downloaded successfully." -ForegroundColor Green
-            
-            if (Install-ChipsetDriver -DriverInfo $driverMatch -DriverPath $driverPath) {
-                $successCount++
+        Write-Host "`nProcessing package $packageVersion for platforms: $($platforms -join ', ')" -ForegroundColor Cyan
+
+        # Determine variant based on actual package version suffix from Markdown
+        $variant = "Consumer"
+        # Check if package has (S) suffix indicating Server variant
+        if ($packageVersion -match '\(S\)$') {
+            $variant = "Server"
+        }
+
+        # Get download information for this package version and variant
+        $cleanPackageVersion = $packageVersion -replace '\s*\(S\)\s*', ''  # Remove (S) suffix if present
+        $downloadKey = "$cleanPackageVersion-$variant"
+
+        if ($downloadData.ContainsKey($downloadKey)) {
+            $downloadInfo = $downloadData[$downloadKey]
+            $driverPath = "$tempDir\$cleanPackageVersion-$variant"
+
+            Write-Host "Downloading Intel Chipset Device Software $cleanPackageVersion ($variant)..." -ForegroundColor Green
+            if (Download-Extract-File -Url $downloadInfo.Link -OutputPath $driverPath -Prefix $downloadInfo.Prefix) {
+                Write-Host "Driver downloaded and extracted successfully." -ForegroundColor Green
+                
+                if (Install-ChipsetDriver -DriverPath $driverPath -Prefix $downloadInfo.Prefix) {
+                    $successCount++
+                    $processedPackages[$cleanPackageVersion] = $true
+                    Write-Host "Successfully installed package $cleanPackageVersion for $($platforms.Count) platform(s)" -ForegroundColor Green
+                } else {
+                    Write-Host "Failed to install driver." -ForegroundColor Red
+                }
             } else {
-                Write-Host "Failed to install driver." -ForegroundColor Red
+                Write-Host "Failed to download or extract driver." -ForegroundColor Red
             }
         } else {
-            Write-Host "Failed to download driver." -ForegroundColor Red
+            Write-Host "Error: Download information not found for package version $cleanPackageVersion (variant: $variant)" -ForegroundColor Red
+            Write-Host "Please check Intel_Chipset_Drivers_Download.txt for missing entries" -ForegroundColor Yellow
         }
     }
-    
+
     if ($successCount -gt 0) {
         Write-Host "`nIMPORTANT:" -ForegroundColor Yellow
         Write-Host "Computer restart is required to complete driver installation!" -ForegroundColor Yellow
-        Write-Host "Please restart your computer as soon as possible." -ForegroundColor Yellow
+        
+        Write-Host "`nSummary: Installed $successCount unique package(s) for all detected platforms" -ForegroundColor Green
+    } else {
+        Write-Host "`nNo drivers were successfully installed." -ForegroundColor Red
     }
 } else {
     Write-Host "Update cancelled." -ForegroundColor Yellow
@@ -470,5 +667,5 @@ Write-Host "`nCleaning up temporary files..." -ForegroundColor Gray
 Clear-TempDriverFolders
 
 Write-Host "`nDriver update process completed." -ForegroundColor Cyan
-Write-Host "If you have any issues with this script, please report them at:"
-Write-Host "https://github.com/FirstEver-eu/Intel-Chipset-Updater" -ForegroundColor Cyan
+Write-Host "If you have any issues with this tool, please report them at:"
+Write-Host "https://github.com/FirstEver-eu/Intel-Chipset-Driver-Updater" -ForegroundColor Cyan

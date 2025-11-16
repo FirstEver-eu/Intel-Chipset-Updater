@@ -4,8 +4,8 @@ setlocal enabledelayedexpansion
 :: Intel Chipset Driver Update Tool
 :: Requires administrator privileges
 
-:: Set console window size to 75 columns and 50 lines
-mode con: cols=75 lines=50
+:: Set console window size to 75 columns and 64 lines
+mode con: cols=75 lines=64
 
 echo /*************************************************************************
 echo **                     INTEL CHIPSET DRIVER UPDATER                      **
@@ -21,7 +21,7 @@ echo **       Drivers are sourced from official Intel servers.                **
 echo **       Use at your own risk.                                           **
 echo ** --------------------------------------------------------------------- **
 echo **                                                                       **
-echo **     GitHub: https://github.com/FirstEver-eu/Intel-Chipset-Updater     **
+echo **       Link: GitHub.com/FirstEver-eu/Intel-Chipset-Driver-Updater      **
 echo **                                                                       **
 echo *************************************************************************/
 echo.
