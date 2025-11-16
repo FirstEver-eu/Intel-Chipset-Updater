@@ -17,36 +17,18 @@ Unlike official Intel releases, this tool can identify the highest available dri
 - **Clean Operation**: Automatically cleans temporary files after installation
 - **Restart Management**: Prevents automatic restart, allows user-controlled reboot
 
-## 📋 Supported Platforms
+### 📋 Supported Platforms
 
-### Latest Platforms
-- Intel® Core™ Ultra (1st Generation) - Lunar Lake, Meteor Lake
-- 14th Generation (Raptor Lake Refresh) - Arrow Lake
-- 13th Generation (Raptor Lake) - Z790, W780
-- 12th Generation (Alder Lake) - Z690, B660, W680
-
-### Modern Platforms  
-- 11th Generation (Tiger Lake / Rocket Lake)
-- 10th Generation (Comet Lake / Ice Lake)
-- 9th Generation (Coffee Lake Refresh) - Z390, Z370, X299
-
-### Legacy Platforms
-- 8th Generation (Coffee Lake) - Z370
-- 7th Generation (Kaby Lake) - Z270, H270
-- 6th Generation (Skylake)
-- 5th Generation (Broadwell) - X99, B85
-- 4th Generation (Haswell/Haswell-E) - Z87, X99
-- 3rd Generation (Ivy Bridge-E) - X79
-
-### Server & Embedded
-- Granite Rapids, Sapphire Rapids, Emmitsburg servers
-- Lewisburg C620 series
-- Mobile/Embedded: Lakefield, JasperLake, ElkhartLake, and more
+| 🖥️ Mainstream Desktop | ⚡ Workstation/Enthusiast | 🔋 Atom/Embedded & Low-Power |
+| :--- | :--- | :--- |
+| 15th Gen: Panther Lake<br>14th Gen: Arrow Lake, Raptor Lake Refresh<br>13th Gen: Raptor Lake<br>12th Gen: Alder Lake<br>11th Gen: Rocket Lake<br>10th Gen: Comet Lake, Cannon Lake<br>9th/8th Gen: Coffee Lake<br>7th Gen: Kaby Lake<br>6th Gen: Skylake<br>5th Gen: Broadwell<br>4th Gen: Haswell<br>3rd Gen: Ivy Bridge<br>2nd Gen: Sandy Bridge | Xeon W-2400/W-3400: Sapphire Rapids<br>Xeon W-3300: Ice Lake-X<br>X299: Cascade Lake-X, Skylake-X<br>X99: Broadwell-E, Haswell-E<br>X79: Ivy Bridge-E, Sandy Bridge-E | Core Ultra 200V: Lunar Lake<br>N-series: Alder Lake-N<br>Atom: Jasper Lake, Elkhart Lake, Gemini Lake, Apollo Lake<br>Atom Server: Denverton, Avoton<br>Legacy Atom: Bay Trail, Braswell, Valleyview |
+| 💻 Mainstream Mobile | 🗄️ Server Platforms | 🕰️ Legacy Chipsets |
+| Core Ultra 200V: Lunar Lake<br>14th Gen: Meteor Lake<br>11th Gen: Tiger Lake<br>10th Gen: Ice Lake, Comet Lake<br>8th/9th Gen: Coffee Lake<br>7th Gen: Kaby Lake<br>6th Gen: Skylake<br>5th Gen: Broadwell<br>4th Gen: Haswell, Crystal Well<br>3rd Gen: Ivy Bridge<br>2nd Gen: Sandy Bridge | 6th Gen Xeon: Granite Rapids, Clearwater Forest<br>5th Gen Xeon: Emerald Rapids<br>4th Gen Xeon: Sapphire Rapids<br>3rd Gen Xeon: Ice Lake-SP<br>2nd Gen Xeon: Cascade Lake<br>1st Gen Xeon: Skylake-SP<br>Older Xeon: Broadwell-EP, Haswell-EP, Ivy Town, Sandy Bridge-EP | 100 Series: Sunrise Point<br>9 Series: Wildcat Point<br>8 Series: Lynx Point<br>7 Series: Panther Point<br>6 Series: Cougar Point |
 
 ## 🛠️ Usage
 
 ### Option 1: Download Complete Package (Recommended)
-1. Download the latest SFX archive `ChipsetUpdater-10.1.x-Driver64-Win10-Win11.exe` from [Releases](https://github.com/FirstEver-eu/Intel-WiFi-BT-Updater/releases)
+1. Download the latest SFX archive `ChipsetUpdater-10.1.x-Driver64-Win10-Win11.exe` from [Releases](https://github.com/FirstEver-eu/Intel-Chipset-Driver-Updater/releases)
 2. Run the executable as Administrator
 3. Follow the on-screen prompts
 
@@ -72,8 +54,8 @@ For detailed logging and troubleshooting, use:
 ## 🔧 Manual Update
 
 Driver information is maintained in:
-- `chipset-drivers.txt` - Contains download links and versions
-- `Intel_Chipsets_List.md` - Platform compatibility matrix
+- `Intel-Chipset-Driver-Updater.txt` - Contains download links and versions
+- `Intel_Chipset_Drivers_Latest.md` - Platform compatibility matrix
 
 If automatic detection fails, you can manually update these files with the latest driver information.
 
