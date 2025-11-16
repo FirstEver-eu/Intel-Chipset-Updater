@@ -1,21 +1,21 @@
 # Intel Chipset Driver Updater
 Automated tool to detect and install the latest Intel chipset INF drivers.  
 
+> ⚡ **This tool supports older platforms dating back to 2nd-generation Intel CPUs (Sandy Bridge), for which Intel no longer includes drivers in the latest INF packages. While the installer can process these platforms thanks to backward compatibility, in practice no driver is installed or updated for them — the system simply ensures compatibility and maintains the proper INF references.**
+
+📄 The full list of driver versions, and download links for the installer .exe files can be found in `Intel_Chipset_Drivers_Download.txt`
+
 Unlike official Intel releases, this tool can identify the highest available driver version for each platform and also install drivers for older platforms such as B85; X79/C600; Z87, H87, H81/C220; and X99/C610 — platforms whose drivers are not included in the latest Intel Chipset Driver Software.
 
 ## 🪪 Version
-[![GitHub release (latest by date)](https://img.shields.io/github/v/release/FirstEver-eu/Intel-Chipset-Updater?style=flat-square&label=Latest%20Version)](https://github.com/FirstEver-eu/Intel-Chipset-Updater/releases)
+[![GitHub release (latest by date)](https://img.shields.io/github/v/release/FirstEver-eu/Intel-Chipset-Driver-Updater?style=flat-square&label=Latest%20Version)](https://github.com/FirstEver-eu/Intel-Chipset-Driver-Updater/releases)
 
-📄 The full list of driver versions, and download links for the installer .exe files can be found in the included `chipset-drivers.txt`
-
-## 🚀 Features
-
-- **Platform Detection**: Automatically identifies Intel chipset platforms
-- **Version Comparison**: Checks current driver versions vs platform-specific latest available
-- **Smart Driver Selection**: Uses appropriate drivers for each chipset generation
-- **Safe Installation**: Uses official Intel installers with proper parameters
-- **Clean Operation**: Automatically cleans temporary files after installation
-- **Restart Management**: Prevents automatic restart, allows user-controlled reboot
+### 🚀 Key Features
+- Automatic detection of Intel chipsets (Desktop, Mobile, Workstation, Server)  
+- Version comparison against the latest INF releases  
+- Direct installation of chipset INF via Windows Installer (`pnputil`)  
+- Cleans temporary installation files automatically  
+- Debug mode for detailed logging and troubleshooting  
 
 ### 📋 Supported Platforms
 
